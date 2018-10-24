@@ -6,21 +6,8 @@
 - Set the run configuration to use the glassfish server found in the Java EE folder 
 
 ## Running unit tests locally
-Unit tests can be run from the command line or through the IDE using Maven. This will also enforce style checks too as part of the test suite.
+Unit tests can be run from the command line or through the IDE using Maven. This will also run some static analysis too
 
 - Ensure maven in installed
 - If using the IDE set the startup to maven and add `test` to the command line parameters
 - If using a shell then run the following in your repository: `maven test`
-
-
-## Check style IDEA plugin
-
-It is recommended to install the check-style plugin so the IDE can help you fix style errors before pushing to CI:
-
-- Download the plugin [here](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea)
-- In IntelliJ go to File->Settings->Plugins
-- Load the downloading plugin from disk
-- Restart IntelliJ and go to File->Settings->Checkstyle
-- Ensure the `Sun Checks` are enabled
-- Under Editor->Inspections untick and tick `Checkstyle real-time scan` to actually get it to start checking
-
