@@ -10,4 +10,4 @@ Unit tests can be run from the command line or through the IDE using Maven. This
 
 - Ensure maven in installed
 - If using the IDE set the startup to maven and add `test` to the command line parameters
-- If using a shell then run the following in your repository: `maven test`
+- If using a shell then run the following in your repository: `mvn test`
