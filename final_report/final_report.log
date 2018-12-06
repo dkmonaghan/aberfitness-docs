@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.22)  21 NOV 2018 01:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2018.9.22)  6 DEC 2018 02:05
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **final_report.tex
 (./final_report.tex
@@ -456,14 +456,13 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 ) (./final_report.aux
-(./cover.aux) (./declaration.aux) (./acknowledgements.aux) (./abstract.aux)
-(./Chapter1-Overview/chapter1.aux) (./Chapter2-Requirements/chapter2.aux)
-(./Chapter3-Methodology/chapter3.aux) (./Chapter4-Design/chapter4.aux)
-(./Chapter5-Implementation/chapter5.aux) (./Chapter6-Testing/chapter6.aux)
-(./Chapter7-Status/chapter7.aux) (./Chapter8-Evaluation/chapter8.aux)
-(./Appendix1/appendix1.aux) (./Appendix2/appendix2.aux)
-(./Appendix3/appendix3.aux) (./Appendix4/appendix4.aux)
-(./References/references.aux))
+(./cover.aux) (./declaration.aux) (./Chapter1-Overview/chapter1.aux)
+(./Chapter2-Requirements/chapter2.aux) (./Chapter3-Methodology/chapter3.aux)
+(./Chapter4-Design/chapter4.aux) (./Chapter5-Implementation/chapter5.aux)
+(./Chapter6-Testing/chapter6.aux) (./Chapter7-Status/chapter7.aux)
+(./Chapter8-Evaluation/chapter8.aux) (./Appendix1/appendix1.aux)
+(./Appendix2/appendix2.aux) (./Appendix3/appendix3.aux)
+(./Appendix4/appendix4.aux) (./References/references.aux))
 \openout1 = `final_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -559,7 +558,7 @@ LaTeX Info: Redefining \nameref on input line 37.
 \openout2 = `cover.aux'.
 
  (./cover.tex
-<au_logo.png, id=8, 963.6pt x 195.73125pt>
+<au_logo.png, id=11, 963.6pt x 195.73125pt>
 File: au_logo.png Graphic file (type png)
  <use au_logo.png>
 Package pdftex.def Info: au_logo.png used on input line 15.
@@ -581,28 +580,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./au_logo.png>])
 \openout2 = `declaration.aux'.
 
-
-No file declaration.tex.
-\openout2 = `acknowledgements.aux'.
-
-No file acknowledgements.tex.
-\openout2 = `abstract.aux'.
-
-No file abstract.tex.
-(./final_report.toc
+ (./declaration.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
 )
+[1
+
+
+] (./final_report.toc)
 \tf@toc=\write5
 \openout5 = `final_report.toc'.
 
- [1
-
-
-
-
-
-
+pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.65 \newpage
+              [1
 
 ] (./final_report.lof)
 \tf@lof=\write6
@@ -611,8 +605,16 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
  [2]
 \openout2 = `Chapter1-Overview/chapter1.aux'.
 
+ (./Chapter1-Overview/chapter1.tex
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+) [1
 
-(./Chapter1-Overview/chapter1.tex)
+
+]
 \openout2 = `Chapter2-Requirements/chapter2.aux'.
 
  (./Chapter2-Requirements/chapter2.tex)
@@ -636,11 +638,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (./Chapter7-Status/chapter7.tex)
 \openout2 = `Chapter8-Evaluation/chapter8.aux'.
 
- (./Chapter8-Evaluation/chapter8.tex)
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 90.
- [1
-
+ (./Chapter8-Evaluation/chapter8.tex) [2
 
 
 
@@ -677,38 +675,39 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
 
 (./References/references.tex) 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 130.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 130.
-(./final_report.aux (./cover.aux) (./declaration.aux) (./acknowledgements.aux)
-(./abstract.aux) (./Chapter1-Overview/chapter1.aux)
-(./Chapter2-Requirements/chapter2.aux) (./Chapter3-Methodology/chapter3.aux)
-(./Chapter4-Design/chapter4.aux) (./Chapter5-Implementation/chapter5.aux)
-(./Chapter6-Testing/chapter6.aux) (./Chapter7-Status/chapter7.aux)
-(./Chapter8-Evaluation/chapter8.aux) (./Appendix1/appendix1.aux)
-(./Appendix2/appendix2.aux) (./Appendix3/appendix3.aux)
-(./Appendix4/appendix4.aux) (./References/references.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 130.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 130.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
+(./final_report.aux (./cover.aux) (./declaration.aux)
+(./Chapter1-Overview/chapter1.aux) (./Chapter2-Requirements/chapter2.aux)
+(./Chapter3-Methodology/chapter3.aux) (./Chapter4-Design/chapter4.aux)
+(./Chapter5-Implementation/chapter5.aux) (./Chapter6-Testing/chapter6.aux)
+(./Chapter7-Status/chapter7.aux) (./Chapter8-Evaluation/chapter8.aux)
+(./Appendix1/appendix1.aux) (./Appendix2/appendix2.aux)
+(./Appendix3/appendix3.aux) (./Appendix4/appendix4.aux)
+(./References/references.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `final_report.out' has not changed.
-(rerunfilecheck)             Checksum: 550EE70E7B9892585C1BB924E87C363E;46.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 130.
+(rerunfilecheck)             Checksum: C9C3BD0072DE7816715CA19EC438EB86;88.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  ) 
 Here is how much of TeX's memory you used:
- 10908 strings out of 493013
- 161062 string characters out of 6135682
- 407307 words of memory out of 5000000
- 14133 multiletter control sequences out of 15000+600000
- 27998 words of font info for 46 fonts, out of 8000000 for 9000
+ 10907 strings out of 493013
+ 160994 string characters out of 6135682
+ 408307 words of memory out of 5000000
+ 14135 multiletter control sequences out of 15000+600000
+ 33558 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 49i,11n,45p,275b,345s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,11n,45p,941b,345s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on final_report.pdf (4 pages, 99325 bytes).
+imes/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pf
+b>
+Output written on final_report.pdf (6 pages, 115228 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 14 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 69 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 10 named destinations out of 1000 (max. 500000)
+ 22 words of extra memory for PDF output out of 10000 (max. 10000000)
 
