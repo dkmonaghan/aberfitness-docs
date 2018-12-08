@@ -25,7 +25,21 @@ Once the individual microservices had been decided upon, we set out on allocatin
 
 \section{Supporting Tools}
 \subsection{GitHub \& TravisCI}
+Each microservice for \textit{Aber Fitness} was hosted on \textit{GitHub}\footnote{https://github.com/sem5640-2018}. \textit{GitHub} provided many features which proved incredibly useful during the development phase, such as tight integration with \textit{Slack} for notifications straight to our chatrooms and integration with \textit{TravisCI} to automatically trigger unit tests and \textit{Docker} image builds. We also developed a development pattern of requiring all code to be peer reviewed through the use of pull requests and branch protection, a collection of settings which require that a series of conditions have been met before a pull request is able to be merged into the \textit{development} or \textit{master} branch. We configured branch protection in order to ensure that only tested, peer reviewed code would be committed into any upstream branch to reduce the likelihood of errors being introduced into the system and so that any issues could be caught early on. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/approve_pr.png}
+    \caption{A screenshot from \textit{GitHub} showing a pull request on the \textit{GLaDOS} repository being peer reviewed and also checks from \textit{TravisCI} passing before being merged into an upstream branch.}
+\end{figure}
+
+Once a pull request had been approved and merged, \textit{TravisCI} would then be responsible for building and pushing the \textit{Docker} image to \textit{Docker Hub}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/travis_builds_overview.png}
+    \caption{A screenshot from \textit{TravisCI} demonstrating a pull request being merged into the \textit{development} branch, re-passing unit tests once merged and then building the \textit{Docker} image}
+\end{figure}
 
 \subsection{Swagger}
 \begin{figure}[H]
@@ -47,6 +61,7 @@ Once the individual microservices had been decided upon, we set out on allocatin
 \textit{Portainer} provides a dashboard for managing volumes, networks, images and containers on \textit{Docker} hosts. Throughout the initial configuration of the \textit{Docker} images, \textit{Portainer} proved invaluable as it provided the ability to quickly and easily understand what the host was running. \textbf{TODO: More here probably.}
 
 \subsection{Docker Hub}
+\textit{Docker Hub} is a platform provided by \textit{Docker} which allows \textit{Docker} container images to be uploaded and hosted, and easily pulled down by the \lstinline{docker-compose} script. As part of our build process (\textbf{TODO: reference build pipline diagram here}), images are built by \textit{TravisCI} and then pushed to \textit{Docker Hub} before being pulled down onto the \textit{Docker} hosts.
 
 
 \subsection{Slack \& Deployment}
@@ -72,6 +87,6 @@ Once the individual microservices had been decided upon, we set out on allocatin
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Images/aberfitness_slack_bot.png}
-    \caption{A demonstration of the \lstinline{/deploy} command being used to re-deploy \textit{Aber Fitness} onto \lstinline{docker2-m56.dcs.aber.ac.uk}}
+    \caption{A demonstration of the \lstinline{/deploy} command being used to re-deploy \textit{Aber Fitness} onto the staging host}
 \end{figure}
 
