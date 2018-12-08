@@ -1,4 +1,17 @@
 \BOOKMARK [0][-]{chapter.1}{Overview}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Design}{}% 2
-\BOOKMARK [1][-]{section.2.1}{System Overview}{chapter.2}% 3
-\BOOKMARK [0][-]{section.2.1}{Appendices}{}% 4
+\BOOKMARK [0][-]{chapter.2}{Requirements}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Development Methodolgy}{}% 3
+\BOOKMARK [1][-]{section.3.1}{Initial Project Plan}{chapter.3}% 4
+\BOOKMARK [1][-]{section.3.2}{Supporting Tools}{chapter.3}% 5
+\BOOKMARK [2][-]{subsection.3.2.1}{GitHub \046 TravisCI}{section.3.2}% 6
+\BOOKMARK [2][-]{subsection.3.2.2}{Swagger}{section.3.2}% 7
+\BOOKMARK [2][-]{subsection.3.2.3}{Portainer}{section.3.2}% 8
+\BOOKMARK [2][-]{subsection.3.2.4}{Docker Hub}{section.3.2}% 9
+\BOOKMARK [2][-]{subsection.3.2.5}{Slack \046 Deployment}{section.3.2}% 10
+\BOOKMARK [0][-]{chapter.4}{Design}{}% 11
+\BOOKMARK [1][-]{section.4.1}{System Overview}{chapter.4}% 12
+\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 13
+\BOOKMARK [0][-]{chapter.6}{Testing}{}% 14
+\BOOKMARK [0][-]{chapter.7}{Status}{}% 15
+\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 16
+\BOOKMARK [0][-]{chapter.8}{Appendices}{}% 17
