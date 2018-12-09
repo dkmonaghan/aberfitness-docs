@@ -3,31 +3,69 @@
 \section{Deployment}
 
 \section{Java EE}
-some blurb about java ee here
+    \subsection{Common Components}
+        \subsubsection{Dependencies}
+        - Maven to handle
+        - Also handles packaging into WAR
+        - Integration with PMD
 
-\subsection{GLaDOS}
+        \subsubsection{Creating Docker Images}
+        - Travis CI Builds
+        - Using Payara Full Server Images
+        - SSL API changed between versions
+        - Switching to Micro Images
 
-\subsection{Fitbit Ingest Service}
+        \subsubsection{Setting up JTA Targets}
+        - Single connection
+        - Re-organisation of entire folder
+        - Switching to connection pool
+        
+
+    \subsection{GLaDOS}
+        \subsubsection{REST API}
+        - Using JAX-RS
+
+        \subsubsection{Unit Testing and Mocks}
+        - Mockito
+        - Database Connection Wrapper
+
+        \subsubsection{Integration Testing with Arquillian}
+        - Problems injecting correct set of deps
+        - Maven could use reflection, but did not support zip
+        - Switching to manual tests
+
+        \subsubsection{Entity Management}
+        - Using the Javax persistence layer instead of ORM
+        - Writing adaptors to marshall / unmarshall Instant objects
+
+        \subsubsection{Troubleshooting CDI}
+        - Decription of problems
+        - Trying other micro-profile servers
+        - Dropping servlet version
+        - Removing mvn-war dependency from deployment
+
+        \subsubsection{Developing Facelets}
+        - Adding backing beans and OAuth
+        - Generated URLs and Nginx reverse proxy
+
+    \subsection{Fitbit Ingest Service}
 
 \section{.NET Core}
+    \subsection{}{Common Components}
 some blurb about .net core here
 
-\subsection{Booking Facilities}
+    \subsection{Booking Facilities}
 
-\subsection{Challenges}
+    \subsection{Challenges}
 
-\subsection{Communications}
+    \subsection{Communications}
 
-\subsection{Gatekeeper}
+    \subsection{Gatekeeper}
 
-\subsection{Health Data Repository}
+    \subsection{Health Data Repository}
 
-\subsection{Health Dashboard}
+    \subsection{Health Dashboard}
 
-\subsection{Ladders}
+    \subsection{Ladders}
 
-\subsection{User Groups}
-
-
-
-
+    \subsection{User Groups}
