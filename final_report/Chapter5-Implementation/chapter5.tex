@@ -53,6 +53,7 @@
         \par
         By looking at the package namespaces associated with the injection points and running `mvn dependency:tree' we could see that `\textit{org.sonatype.guice}' was the culprit. Walking up the tree we discovered that the WAR plugin was being included in our packaged dependencies. At deployment the microprofile server tried to start a Maven instance and failed, thus removing this dependency correctly allowed the application to start. The development teams realised that the plugin was included in our installed copies so we could still continue to use it.
 
+        \label{JTA_Targets}
         \subsubsection{Setting up JTA Targets}
         Both services started off by instantiating the single JDBC connection through the driver manager as required. This had some caveats however: Firstly, the JDBC driver had to be distributed and managed within the web archive. Secondly, there was no form of connection pooling to allow for scaling at the persistence layer.
 
@@ -62,34 +63,76 @@
         \par
         Glassfish allows a web application to specify resources found on the server using `glassfish-resources.xml'. This XML file can also use system environment variables allowing us to protect and specify database credentials on the deployment targets. The examples found online primarily pertained to a \textit{MySQL} deployment, so multiple iterations of testing and deployment were required to get the pool working successfully. This switch allows an application to detect and create connection pools at deployment, allowing the images to rapidly redeploy facing another database instance.
 
+    \subsection{Fitbit Ingest Service}
+        \subsubsection{To Do}
+
     \subsection{GLaDOS}
         \subsubsection{REST API}
-        - Using JAX-RS
+        \par
+        The primary role of GLaDOS is to store audit data so that users can view how their data was viewed and modified. Whilst there are native implementations, such as the Java Messaging Service, these require the calls be proxied into a local JVM instance to handle the transport component. We chose to serialise into JSON and use REST as the transport mechanism as all applications had native support for this setup.
+
+        \par
+        \textit{JAX-RS} is an API specification for JSON parsing in Java, additionally Payara provides \textit{Jersey} as the implementation of this API at runtime. This avoided us having to package additional dependencies into the web archive. This also allows us to build standard response pages based on the error code internally generated, avoiding having to develop error views.        
 
         \subsubsection{Unit Testing and Mocks}
-        - Mockito
-        - Database Connection Wrapper
+        \par
+        A new class abstracting the database layer allowed us to avoid writing entity handling at this. We instead focused on writing unit tests which verified the various endpoints correctly serialised or de-serialised data. \textit{Mockito}\cite{Mockito} allows developers to inject mock objects by specifying the class which the test fixture is using.
+
+        \par
+        We could not use dependency injection within the endpoint implementation, as the instantiation point is internal to the framework. This doesn't prevent us from using mocks as Mockito allows a developer to inject them through the reflection methods built into the library. A database call such as `\textit{db.getEntry(id)}' could be tested to see which status codes would be sent and verify the data,if any, was serialised correctly.
 
         \subsubsection{Integration Testing with Arquillian}
-        - Problems injecting correct set of deps
-        - Maven could use reflection, but did not support zip
-        - Switching to manual tests
+        \textit{Arquillian}\cite{Arquillian} allows developers to specify the classes to archive and deploy within the text fixture. Payara also provides an embedded Arquillian test container which can be ran at test time to exercise sections of a full system. This would allow us to write integration tests for an end-to-end operations, such as POSTing data to an endpoint and ensuring it is written to the persistence layer.
+
+        \par
+        There was extensive documentation on the methods required to pack an archive, but limited examples on handling Maven dependencies. As the embedded instance provides no runtime methods we were having problems getting the container to correctly run. Developers could specify the full class paths for their dependencies to ensure the were packaged, but this was extremely verbose and fragile.
+
+        \par
+        We looked into using the Maven dependency resolver, which allows developers to get a list of runtime Jars and package them into the archive. However this would led to another set of problems where Maven was trying to export them into a \textit{.zip} format, then throw an exception because this was not supported.
+
+        \par
+        With no easy was to control the format that runtime dependencies were exported in, combined with a lack of documentation pertaining specifically to Maven we agreed to abandon this method of automated testing. This would give us more time for implementing other components within the deadline. We opted to rely on manual integration testing for the duration of the project instead.
 
         \subsubsection{Entity Management}
-        - Using the Javax persistence layer instead of ORM
-        - Writing adaptors to marshall / unmarshall Instant objects
+        This service only persists Audit Data, therefore we ultimately need to persist a single entity. Whilst many ORM solutions exists for Java,such as \textit{Hibernate}, we decided against them due to the implementation overhead that was required.
 
-        \subsubsection{Troubleshooting CDI}
-        - Decription of problems
-        - Trying other micro-profile servers
-        - Dropping servlet version
-        - Removing mvn-war dependency from deployment
+        \par
+        Instead we relied on the persistence layer provided in the EE specification. Using the connection pools which were setup for both Java services (see \ref{JTA_Targets}), we could specify which JTA the injected entity manager should use.
+
+        \par
+        The table schema is managed through annotations on an entity class. This also allows the implementation provided by Payara, \textit{EclipseLink}, to create the tables required at deployment time. As the framework relies on the field types to determine which underlying storage to use there is a hidden pitfall. If the type does not have a native serialisation Java will try to persist this using binary data.
+
+        \par
+        Instants are used to specify timestamps on logs, these are cross compatible as they use \textit{ISO 8601}\cite{ISO_8601}, a string specifier for absolute time points. This format allows both .Net and Java application to send timestamps in the following format \textit{2018-11-28T12:04:14Z}. However as this type was added in JDK 8 there is no native storage conversion built into the entity framework.
+
+        \par
+        Two adaptors were written based on the \textit{AttributeConverter} interface. These provide methods for marshalling and un-marshalling Instants into String objects, which the entity manager can easily store. Annotating the field installed the converting class and correctly updated the schema. This also has the added benefit of making the stored timestamps human readable within the database, which extremely helpful for debugging.
 
         \subsubsection{Developing Facelets}
-        - Adding backing beans and OAuth
-        - Generated URLs and Nginx reverse proxy
+        \par
+        GLaDOS also provides a page that allows a user to retrieve audit data associated with their account. Administrators can lookup any users audit data by user their unique ID too. In addition there is a status page which allows anyone to view the status of all other micro-services without logging in.
 
-    \subsection{Fitbit Ingest Service}
+        \par
+        The front-end of GLaDOS use facelets to implement the MVC pattern. A backing bean for the user data uses named queries from the persistence layer to retrieve data into a list of entity objects. We switched to using \textit{PrimeFaces}\cite{Primefaces}, which is a fork of the now deprecated \textit{RichFaces}. This allows us to use components such as \textit{DataTables} that are implicitly reactive rather than us developing our own supporting CSS.
+
+        \par
+        The Fitbit Ingest Service had completed OAuth implementation for connecting to internal and external APIs. This was ported across to GLaDOS and further modified. As the ingest service has no front-end they don't need to persist \textit{JSON Web Token (JWT)}. Additional methods were written specifically for this microservice. These include using the HTTP session handling built into the web framework to persist the token on the server. Another helper class was written which validates the stored JWT as the user navigates through protected pages, or POSTs any requests.
+
+        \par
+        Service statuses were implemented using a singleton Java bean which is instantiated at deployment. Using the scheduling capability provided for EJBs we poll all services every 20 seconds in a seperate thread. All services implement an endpoint at \textit{/api/status} that returns a 200 or 204. This is stored until the page is retrieved where the backing bean, acting as a presenter forward the results on.
+
+        \par
+        As the application stack uses an Nginx instance to reverse proxy queries the URLs must take this into account when they are generated within the facelet. .Net makes this trivial by calling `\textit{App.UsePathBase(URL)}' at startup, however Java applications rely on the context root. This was interfering with the URL rewriting that Nginx performs resulting in the service using the 
+        `\textit{\texttt{\textbackslash}glados\texttt{\textbackslash}glados\texttt{\textbackslash}}' base path.
+
+        \par
+        Initially we used an environment variable to manually generate links between the pages of the service and set the context root to 
+        `\textit{\texttt{\textbackslash}}'. However, this quickly proved to be untenable when using forms, as POST requests were being sent to 
+        `\textit{\texttt{\textbackslash}destination}' 
+        rather than 
+        `\textit{\texttt{\textbackslash}glados\texttt{\textbackslash}destination}'. Ultimately to work around this an exception was added to Nginx configuration to avoid re-writing any URLs for GLaDOS, and instead rely on the service to correctly address all requests. This allowed us to switch back to generating addresses based on the \textit{outcome} tag and use forms on the service.
+
+
 
 \section{.NET Core}
     \subsection{}{Common Components}
