@@ -53,7 +53,7 @@ The Fitbit Ingest Service had completed OAuth implementation for connecting to i
 Service statuses were implemented using a singleton Java bean which is instantiated at deployment. Using the scheduling capability provided for EJBs we poll all services every 20 seconds in a seperate thread. All services implement an endpoint at \textit{/api/status} that returns a 200 or 204. This is stored until the page is retrieved where the backing bean, acting as a presenter forward the results on.
 
 \par
-As the application stack uses an \textit{nginx} instance to reverse proxy queries the URLs must take this into account when they are generated within the facelet. .NET Core makes this trivial by calling `\textit{App.UsePathBase(URL)}' at start up, however Java applications rely on the context root. This was interfering with the URL rewriting that Nginx performs resulting in the service using the 
+As the application stack uses an \textit{nginx} instance to reverse proxy queries the URLs must take this into account when they are generated within the facelet. .NET Core makes this trivial by calling `\textit{App.UsePathBase(URL)}' at start up, however Java applications rely on the context root. This was interfering with the URL rewriting that nginx performs resulting in the service using the 
 `\textit{/glados/glados/}' base path.
 
 \par
@@ -61,4 +61,4 @@ Initially we used an environment variable to manually generate links between the
 `\textit{/}'. However, this quickly proved to be untenable when using forms, as POST requests were being sent to 
 `\textit{/destination}' 
 rather than 
-`\textit{/glados/destination}'. Ultimately to work around this an exception was added to Nginx configuration to avoid re-writing any URLs for GLaDOS, and instead rely on the service to correctly address all requests. This allowed us to switch back to generating addresses based on the \textit{outcome} tag and use forms on the service.
+`\textit{/glados/destination}'. Ultimately to work around this an exception was added to nginx configuration to avoid re-writing any URLs for GLaDOS, and instead rely on the service to correctly address all requests. This allowed us to switch back to generating addresses based on the \textit{outcome} tag and use forms on the service.
