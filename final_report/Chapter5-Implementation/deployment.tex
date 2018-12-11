@@ -10,10 +10,13 @@ The above diagram (\textbf{TODO: link fig ref}) outlines our deployment and code
 
 This deployment flow typically worked very well for us throughout the development process, allowing us to easily deploy code updates to \textit{docker2.aberfitness.biz} while also ensuring that code had been peer reviewed and unit tested before being rolled out onto a live server. Our deployment flow relied heavily upon GitHub and Travis, as they were responsible for hosting our code and generating Docker images respectively. While the majority of the time these services worked out incredibly well for us, we had a few issues during incidents where TravisCI was suffering from outages, rendering us unable to deploy code updates, adding a few delays to the development process.
 
-\subsubsection{nginx, MariaDB, Syslog}
+\subsubsection{nginx and MariaDB}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/nginx_proxy_flow.png}
     \caption{Traffic flow diagram showing an end user's browser connecting to the internet facing \textit{nginx} server, which then proxies requests through to the backend microservice}
 \end{figure}
 
+The Aber Fitness system architecture means that not exposed to the internet, but are instead available over an internal Docker network which allows containers to communicate with each other. In order to provide external access to the web servers of all of our microservices we have deployed nginx, an open-source and free web server which features highly customisable config files. Through the use of nginx's \lstinline{proxy\_pass} directive, we are able to take requests from end users and pass them through to the correct backend microservice based on the requested URI. \textbf{TODO: link figure above}
+
+The system also required persistent database storage for all the backend microservices to store activity data, user accounts, logs, and more. It was decided that we would run \textit{MariaDB} in a Docker container which every microservice would connect to. MariaDB was decided upon due its compatibility with both Java EE and .NET Core. MS SQL Server, while natively supported in .NET Core, would have been difficult to integrate into our Java EE applications and also would have had licensing implications. 
