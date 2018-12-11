@@ -1,5 +1,7 @@
 # Based on https://github.com/github/gitignore/blob/master/TeX.gitignore
 
+final_report/final_report.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
