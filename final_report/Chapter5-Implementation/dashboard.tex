@@ -1,0 +1,14 @@
+\subsubsection{MVC Architecture}
+\par
+The Health Dashboard was included in the design of the system to allow users to visualise and add to their activity data, personal goals and group challenges. To this end, the Health Dashboard does not have a need for a persistence layer, as all of the data it processes are stored and accessed from other microservices on the system. This lead to the service being designed initially with one controller and its associated views, with model classes existing only to aid in manipulating retrieved data.
+
+\par
+Initially the service was to only have one controller, \textit{DashboardController}, but part-way through the project it was noted that splitting off the administrative functionality of the Health Dashboard to another controller could be worthwhile. Later on in the project it was decided that administrative functionality would be better placed in microservices that control the data, and so the concept was dropped. The name of the single controller was later changed to \textit{HomeController} for semantic and technical reasons.
+
+\subsubsection{Data Visualisation}
+\par
+Lorem graphsum
+
+\subsubsection{User Interface Style}
+\par
+Lorem gentelella
