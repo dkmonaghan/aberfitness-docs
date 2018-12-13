@@ -1,21 +1,13 @@
 \chapter{Testing}
+\par
+One of the core tenets of continuous deployment is the reliance on a mix of automated and manual testing to ensure a system is functioning correctly. The applicable subset of these tests were run before each change specified in a pull request was accepted. The full suite is run as part of the release process, allowing developers to deploy the application to production with confidence.
 
-- Unit testing gives baseline coverage
-- Subset were run before each pull request
-- Full suite was run before performing release
-- 
+\input{Chapter6-Testing/unit-testing.tex}
 
-\section{Unit Testing}
-    \input{Chapter6-Testing/unit-testing.tex}
+\input{Chapter6-Testing/integration-testing.tex}
 
-\section{Integration Testing}
-    \input{Chapter6-Testing/integration-testing.tex}
+\input{Chapter6-Testing/system-testing.tex}
 
-\section{System Testing}
-    \input{Chapter6-Testing/system-testing.tex}
+\input{Chapter6-Testing/static-analysis.tex}
 
-\section{Static Analysis}
-    \input{Chapter6-Testing/static-analysis.tex}
-
-\section{Acceptance Testing}
-    \input{Chapter6-Testing/acceptance-testing.tex}
+\input{Chapter6-Testing/acceptance-testing.tex}
