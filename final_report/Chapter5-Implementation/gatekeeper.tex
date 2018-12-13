@@ -8,12 +8,24 @@ Rather than attempting to implement our own OAuth 2.0 server, it seemed benefici
 
 Two basic OAuth 2.0 flows are used within AberFitness - Authorization Code (including the hybryid flow OpenID Connect extension) for applications with a GUI wishing to identify users, and Client Credentials for API authorization between the various microservices.
 
+When a user first attempts to access a service where authentication is required, they are redirected to Gatekeeper in order to log in.  Once logged in, they are redirected back to the client application which completes a token validation process in order to verify the login.  To facilitie SSO, users which are already logged in to Gatekeeper will be seamlessly redirected back to the client application with no action required from them.
 
+[Flow diagram]
+
+On subsequent requests, a redirect to Gatekeeper is not usually required.  Access tokens are valid for one hour, with the client being able to obtain new tokens via the use of a refresh token.  Redirection to Gatekeeper should only be required if the user has cleared their browser cookies, or those cookies have become invalidated for some reason.
+
+[Flow diagram]
+
+When a microservice wishes to call the API of another microservice, they obtain a client credentials access token from Gatekeeper, and send it in the Authorization header of the request they are making.  Access tokens have a limited number of scopes (services) for which they are valid, and the service receiving the request will reject the token should it not contain the scope required for that service.  Once the content of access token has been checked, the signature of the token is validated using the JSON Web Key Set (JWKS) available from Gatekeeper.  This is essentially a public key which can be used to verify that the access token was indeed issued by Gatekeeper.
+
+[Flow diagram]
 
 
 There was some consideration as to whether client credentials was the correct flow to use for authorization when obtaining user resources within AberFitness.  Typically you would require an access token specific to that user, obtained using the authorization code flow, in order to access resources such as activity data belonging to that user.  Eventually it was decided that the authorization code flow would be more relevant to third-party applications wishing to access our APIs.  As all microservices within AberFitness can be considered as belonging to the same overall system, it seemed that the client credentials flow was sufficient to authorize access to data from other services within the AberFitness system.
 
 \subsubsection{Implementation Details}
+
+client libraries
 
 data protection keys
 
