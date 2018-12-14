@@ -1,0 +1,8 @@
+\section{Static Analysis}
+\subsection{PMD}
+\par
+Initially, Java used \textit{CheckStyle} to also enforce coding style conventions. However, the rules were far too strict to be beneficial or practical and, unlike other formatting tools, there was no option to emit a patch-file which allows developers to automatically fix-up many errors such as incorrect white space or formatting.
+
+\par
+The Java teams later migrated to the \textit{PMD}\cite{PMD} static analysis tool: this warns about unused fields and variables, unsafe constructs, and dangerous coding patterns.
+The Maven test target was modified to run the \textit{PMD}\cite{PMD} static analysis tool before any unit tests. If any violations were detected the build would immediately stop, ensuring all modifications were inspected.

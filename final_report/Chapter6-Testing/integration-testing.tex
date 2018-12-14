@@ -1,0 +1,9 @@
+\section{Integration Testing}
+\par
+Most of the micro-services provide internal APIs, which are not designed for external usage. To protect these endpoints the OAuth 2.0 flow was used to authorize application interactions with client credentials. Whilst unit testing ensures each API correctly responds according to its documented behaviour, it does not exercise all components that partake in an interaction.
+
+\par
+As REST endpoints were used as the primary message exchange method we could send and request JSON payloads to ensure the system under test behaved as expected. Multiple third party solutions were used for testing APIs, such as the \textit{Insomnia REST Client}. 
+
+\par
+Developers used these tools to ensure that malformed requests or interaction with no authorization token were correctly handled. Additionally they can handle the OAuth flow on a developers behalf, this was extremely useful when debugging interactions between applications and resolving digressions from the API specifications.

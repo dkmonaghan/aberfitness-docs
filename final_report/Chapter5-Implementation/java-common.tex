@@ -17,13 +17,6 @@ Whilst working locally developers could still rely on IntelliJ's built in mechan
 By utilising the ability to run the entire build process on the command-line with Maven we were able to quickly add Travis CI integration. This would clean compile the entire application, run the full \textit{JUnit} test suite and lastly package a WAR file.
 
 \par
-Initially we used \textit{CheckStyle} to also enforce coding style conventions. However the rules were over-specified. Additionally, unlike other formatting tools there was no option to emit a patch-file which allows developers to automatically fix-up many errors such as incorrect white space or formatting.
-
-\par
-The Java teams migrated to the \textit{PMD}\cite{PMD} static analysis tool: this warns about unused fields and variables, unsafe constructs,and dangerous coding patterns.
-The Maven test target was modified to run the \textit{PMD}\cite{PMD} static analysis tool before any unit tests. If any violations were detected the build would immediately stop, ensuring all modifications were inspected.
-
-\par
 The groups proceeded to add a \textit{Dockerfile} to build a docker image for later deployment. Payara provide multiple images on \textit{DockerHub}\cite{DockerHub_Payara}, which range from the full server to an embedded instance.
 
 \par
