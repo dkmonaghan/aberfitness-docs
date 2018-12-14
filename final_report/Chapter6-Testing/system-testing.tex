@@ -1,6 +1,6 @@
 \section{System Testing}
 \par
-Aberfitness is deployed onto two separate docker hosts that represent staging and production. Developers trigger a deployment from the latest development images in Slack then manually test the system in a deployed state. This also allows us to detect deployment specific problems, which are un-testable without a complete system.
+Aber Fitness is deployed onto two separate docker hosts that represent staging and production. Developers trigger a deployment from the latest development images in Slack then manually test the system in a deployed state. This also allows us to detect deployment specific problems, which are un-testable without a complete system.
 
 \par
-One example of an issue caught by manual system testing was a controller which was not asynchronous. Unit tests would not exercise the instance in parallel, so this was not noticed through unit testing. When API calls were made to the deployed application a 502 was thrown. The controller was blocked on the original call and could not respond to the next call.
+One example of an issue caught by manual system testing was a controller which was not asynchronous. Unit tests would not exercise the instance in parallel, so this was not noticed through unit testing. When API calls were made to the deployed application a HTTP 502 was thrown. The controller was blocked on the original call and could not respond to the next call.
