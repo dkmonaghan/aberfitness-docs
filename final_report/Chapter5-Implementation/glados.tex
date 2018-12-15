@@ -1,6 +1,18 @@
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/service_glados.png}
+    \caption{A screenshot from GLaDOS displaying a user's audit data, where they can view when and how their data was accessed, modified, or deleted}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/service_status.png}
+    \caption{GLaDOS' service status interface, displaying the status of all the microservices within the system. In this example, the \textit{Challenges} is offline, whereas all other microservices are online}
+\end{figure}
+
 \subsubsection{REST API}
 \par
-The primary role of GLaDOS is to store audit data so that users can view how their data was viewed and modified. Whilst there are native implementations, such as the Java Messaging Service, these require the calls be proxied into a local JVM instance to handle the transport component. We chose to serialise into JSON and use REST as the transport mechanism as all applications had native support for this set up.
+The primary role of GLaDOS is to store audit data so that users can view how their data was viewed and modified. Whilst there are native implementations, such as the Java Messaging Service, these require the calls be proxied into a local JVM instance to handle the transport component. We chose to serialise into JSON and use REST as the transport mechanism as all applications had native support for this set up. In addition to this, GLaDOS also offers a page which displays the status of all the microservices within the system.
 
 \par
 \textit{JAX-RS} is an API specification for JSON parsing in Java, additionally Payara provides \textit{Jersey} as the implementation of this API at runtime. This avoided us having to package additional dependencies into the web archive. This also allows us to build standard response pages based on the error code internally generated, avoiding having to develop error views.        
