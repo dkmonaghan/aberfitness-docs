@@ -1,3 +1,9 @@
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/service_landing_page.png}
+    \caption{Gatekeeper is responsible for serving up the landing page, which features a user log in form and the ability for users to register to join Aber Fitness}
+\end{figure}
+
 During the analysis and planning stages it quickly became apparent that a central authentication and authorization system would be required. The Gatekeeper service is responsible for providing this, and does so by acting as both an OAuth 2.0 Authorization Server, and an OpenID Connect Identity Provider (IDP). Such a set up provides a number of benefits, including seamless Single Sign-On (SSO), relative ease of implementation due to the abundance of available libraries, separation of concerns by decoupling authentication \& authorization from each microservice, and the theoretical ability to allow third-party access to Aber Fitness APIs in the future.
 
 \subsubsection{IdentityServer4}
