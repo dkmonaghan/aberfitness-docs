@@ -34,7 +34,7 @@ Instead we relied on the persistence layer provided in the EE specification. Usi
 The table schema is managed through annotations on an entity class. This also allows the implementation provided by Payara, \textit{EclipseLink}, to create the tables required at deployment time. As the framework relies on the field types to determine which underlying storage to use there is a hidden pitfall. If the type does not have a native serialisation Java will try to persist this using binary data.
 
 \par
-Instants are used to specify timestamps on logs, these are cross compatible as they use \textit{ISO 8601}\cite{ISO_8601}, a string specifier for absolute time points. This format allows both .NET Core and Java application to send timestamps in the following format \textit{2018-11-28T12:04:14Z}. However as this type was added in JDK 8 there is no native storage conversion built into the entity framework.
+Instants are used to specify timestamps on logs, these are cross compatible as they use \textit{ISO 8601}, a string specifier for absolute time points. This format allows both .NET Core and Java application to send timestamps using the time since POSIX epoch in milliseconds. However as this type was added in JDK 8 there is no native storage conversion built into the entity framework.
 
 \par
 Two adaptors were written based on the \textit{AttributeConverter} interface. These provide methods for marshalling and un-marshalling Instants into String objects, which the entity manager can easily store. Annotating the field installed the converting class and correctly updated the schema. This also has the added benefit of making the stored timestamps human readable within the database, which extremely helpful for debugging.
