@@ -1,0 +1,24 @@
+\subsubsection{OAuth2.0 Connection}
+
+\par
+The primary purpouse of this application was to connect to the Fitbit Web API and gain the ability to pull our users Fitbit Account data if they provide access. Because of this we knew from day one that we would need to make use of OAuth2.0.
+\par
+To achive this we used a OAuth library called \textit{Scribe_Java}\cite{ScribeJava}. We came to this decuision during the spikework as this library made connecting to fitbit's API easier as it has Fitbit as one of its built in Services. This library provides and OAuthService object which handles generating Http Requests to the OAuth provider.
+\par
+When it came to integrating with the Gatekeeper the OpenId provider microservice we decided to also use the \textit{Scribe_Java}\cite{ScribeJava} library. The library also offers the ability to define your own OAuth provider API to connect to. So to do this a Gatekeeper API definition was written that allowed us to instantiate service objects that would work with the Gatekeeper API.
+\par
+Towards the end of the project we did notice that the payara API also offers and OpenId implementation which would have made connecting to gatekeeper much easier. The payara api also offers the ability to secure pages and API endpoints by just using annotations on the classes. But by the time we realised that this is possible there wasn't much time left. But if we were to have more time we would switch to using this for gatekeeper authentication.
+
+\subsubsection{Entity Management}
+
+\par
+ 
+
+\subsubsection{REST API Implementation}
+
+\par
+
+
+\subsubsection{Deploying to Docker 2}
+
+
