@@ -1,0 +1,22 @@
+\subsubsection{MVC Architecture}
+\par
+The Health Dashboard was included in the design of the system to allow users to visualise and add to their activity data, personal goals and group challenges. To this end, the Health Dashboard does not have a need for a persistence layer, as all of the data it processes is stored and accessed from other microservices on the system. This lead to the service being designed initially with one controller and its associated views, with model classes existing only to aid in manipulating retrieved data.
+
+\par
+Initially the service was to only have one controller, \textit{DashboardController}, but part-way through the project it was noted that splitting off the administrative functionality of the Health Dashboard to another controller could be worthwhile. Later on in the project it was decided that administrative functionality would be better placed in microservices that control the data, and so the concept was dropped. The name of the single controller was later changed to \textit{HomeController} for semantic and technical reasons associated with a repeated pattern in the URL (\textit{dockerN.aberfitness.biz/dashboard/dashboard/\{action\}}).
+
+\subsubsection{User Interface Style and AJAX}
+\par
+As the User Interface is a prime concern for this microservice, implementation of an open-source and professional template was high-priority, once data processing spike-work was completed. A template was decided on with the aim to implement it into every microservice eventually. Unfortunately, some time after being implemented as part of the Health Dashboard, the template was later changed to integrate better with Bootstrap 4 and to be simpler in DOM terms. While certainly a major advantage for the other microservices, it resulted in some time being lost to re-implementing the existing view files.
+
+% TODO Find some more to say here, maybe?
+\par
+In order to keep the user experience fluid, goal and activity data deletion and the simple steps recorder use AJAX on the webpage instead of using a form submission. The state of the \textit{Activity Breakdown} graph was originally going to be refreshed using AJAX, however the library used to produce the graph allows data to be added dynamically, so that was not required.
+
+\subsubsection{Data Visualisation}
+\par
+Data Visualisation was to be generated using a JavaScript library, primarily from data sourced from Health Data Repository. It was decided that ChartJS\cite{chartjs} would be used, as it was simple to use, and a member of the team had some experience using it. This was used to create the \textit{Activity Breakdown} and \textit{Total Distance} graphs.
+
+\subsubsection{Headless Testing and Mocking}
+\par
+It was originally intended that the Health Dashboard would be primarily tested using a library such as PhantomJS or CasperJS in order to make sure that forms were working properly in addition to navigation in general. This was stymied by the change of layout, and by extension the structure of the views, as it would been a fool's errand to implement working tests before the change; once the change was completed time restraints meant that adding tests wasn't feasible.
