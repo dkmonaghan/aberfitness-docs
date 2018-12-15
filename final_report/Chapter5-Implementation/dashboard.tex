@@ -15,8 +15,15 @@ In order to keep the user experience fluid, goal and activity data deletion and 
 
 \subsubsection{Data Visualisation}
 \par
-Data Visualisation was to be generated using a JavaScript library, primarily from data sourced from Health Data Repository. It was decided that ChartJS\cite{chartjs} would be used, as it was simple to use, and a member of the team had some experience using it. This was used to create the \textit{Activity Breakdown} and \textit{Total Distance} graphs.
+Data visualisations were to be generated using a JavaScript library, primarily from data sourced from Health Data Repository. It was decided that ChartJS\cite{chartjs} would be used, as it was simple to use, and a member of the team had some experience using it. This was used to create the \textit{Activity Breakdown} and \textit{Total Distance} graphs.
 
 \subsubsection{Headless Testing and Mocking}
 \par
-It was originally intended that the Health Dashboard would be primarily tested using a library such as PhantomJS or CasperJS in order to make sure that forms were working properly in addition to navigation in general. This was stymied by the change of layout, and by extension the structure of the views, as it would been a fool's errand to implement working tests before the change; once the change was completed time restraints meant that adding tests wasn't feasible.
+It was originally intended that the Health Dashboard would be primarily tested using a library such as \textit{PhantomJS} or \textit{CasperJS} in order to make sure that forms were working properly in addition to navigation in general. This was impeded by the change of layout, and by extension the structure of the views, as it would been a fool's errand to implement working tests before the change; once the change was completed time restraints meant that adding tests wasn't feasible.
+
+\subsubsection{Engagement}
+\par
+From our initial read of the functional requirements document, it was clear to us that the Health Dashboard would be an ideal landing page for users, given the requirement for a graph showing progress. As a result, we chose to integrate some of requirements from the Engagement section.
+
+\par
+The functional requirements specified in \textit{E-FR1} that activity data rankings should be displayed based on users' activity data. It was not specified where this functionality should reside, but it seemed to make the most sense to make it a part of the Health Dashboard. This was also the case for \textit{E-FR2}.
