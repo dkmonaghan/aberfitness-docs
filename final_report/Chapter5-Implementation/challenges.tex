@@ -1,25 +1,25 @@
 \subsubsection{Overall Functionality}
 \par
-The \textit{Challenges} microservice was created to set personal and group goals. When creating a challenge, a member has the ability to select an activity, goal metric and goal within a time frame. This microservice is the only one to use the coordinator user type, with coordinators being able to create group challenges. The group challenges are specific to a single group, and can only be joined by users within that group.
+The \textit{Challenges} microservice was created to set personal and group challenges. When creating a challenge, a member has the ability to select an activity, goal metric and goal within a time frame. The group challenges are specific to a single group, and can only be joined by users within that group. \textit{Challenges} is the only microservice to use the coordinator user type, with coordinators being able to create group challenges. 
 
 \subsubsection{MVC Architecture}
 \par
 As the microservice requires CRUD operations on data, it was essential that a persistence layer was present.
-Initially the microservice consisted of \textit{Challenge} and \textit{Activity} models, but this proved to be inadequate when it came to database normalisation. After many alterations to the architecture, \textit{UserChallenge}, \textit{ChallengeManage}, \textit{Activity} and \textit{GoalMetric} were the final controllers, with \textit{ChallengeManage} only named as such due to an issue with \textit{nginx}. The \textit{UserChallengeController} is used to keep track of challenges a user is currently taking part in, which includes both personal and group challenges.
+Initially the microservice consisted of \textit{Challenge} and \textit{Activity} model-view-controllers, but this proved to be inadequate when it came to database normalisation. The architecture underwent many alterations, eventually resulting in \textit{UserChallenge}, \textit{ChallengeManage}, \textit{Activity} and \textit{GoalMetric} as the final model-view-controllers, with \textit{ChallengeManage} only named as such due to an issue with \textit{nginx}. The \textit{UserChallengeController} is used to keep track of a user's group and personal challenges.
 
 \par
-Each user challenge is assigned a \textit{ChallengeId}. The view page for \textit{UserChallenge} displays the challenge information for the current user's challenges. The \textit{ChallengeManageController} is used to handle all challenges that have been created. The view page for \textit{ChallengeManage} displays all group challenges. A challenge is assigned both a \textit{GoalMetricId} and \textit{ActivityId}. The \textit{ActivityController} and \textit{GoalMetricController} are used to allow activities and goal metrics to be changed by administrators and coordinators. The activities are retrieved from the \textit{Health Data Repository} and the goal metrics need to be manually entered to match the database key.
+The index pages for \textit{UserChallenge} and \textit{ChallengeManage} display all of the user's challenge information and group challenges respectively. The \textit{ChallengeManageController} is used to handle all existing challenges. A challenge is assigned both a \textit{GoalMetricId} and an \textit{ActivityId}. The \textit{ActivityController} and \textit{GoalMetricController} allow admins and coordinators to modify activities and goal metrics. The activities are retrieved from the \textit{Health Data Repository} and the goal metrics must be manually entered to match the database key.
 
 \subsubsection{API Access}
 \par
-The microservice requires access to the \textit{Health Data Repository} microservice to retrieve data in order to update the progress of a challenge. When the user challenges page or API endpoint is accessed, their challenges are updated with the most recent data.
-The microservice also requires access to the \textit{User Groups} microservice to retrieve information about a user or group. When a user loads the group challenges page, the challenges are filtered depending on to which group they belong.
-The microservice also requires access to the \textit{Communications} microservice, in order to send notifications to users whenever their challenges close.
+The microservice requires access to the \textit{Health Data Repository} to retrieve data in order to update the progress of a challenge. When the user challenges page or API endpoint is accessed, their challenges are updated with the most recent data.
+Access is also required to \textit{User Groups} to retrieve information about a user or group. A user will only see challenges for their group on the group challenges page. 
+In addition access is required to the \textit{Communications} microservice, in order to send notifications to users when their challenges close.
 
 \subsubsection{API Endpoints}
 \par
-The \textit{Health Dashboard} microservice requires access to the \textit{Challenges} microservice to display personal and group challenges and create personal challenges. To display the challenges on the \textit{Health Dashboard}, \textit{GET} endpoints to retrieve a users personal and group challenges were needed. To create a challenge, a \textit{POST} endpoint to create a challenge and an associated user challenge was needed. As the challenge can only be created for specific activities, the \textit{Health Dashboard} must also retrieve a list of available activities from a \textit{GET} endpoint.
-The \textit{PUT} endpoint was created to allow the Health Dashboard microservice to update existing personal challenges, but that functionality was not implemented in the \textit{Health Dashboard}.
+The \textit{Health Dashboard} requires access to the \textit{Challenges} microservice to display personal and group challenges and create the former. Displaying challenges on the \textit{Health Dashboard} required retrieving a user's personal and group challenges, which necessitated \textit{GET} endpoints. \textit{POST} endpoints were needed to create a challenge and associated user challenge. As the challenge can only be created for specific activities, the \textit{Health Dashboard} must also retrieve a list of available activities from a \textit{GET} endpoint.
+Although the functionality was ultimately not implemented, the \textit{PUT} endpoint was created to allow the \textit{Health Dashboard} microservice to update existing personal challenges.
 A status endpoint was necessary for \textit{GLaDOS}, so that the current status of the microservice could be displayed.
 
 \subsubsection{User Interface}
