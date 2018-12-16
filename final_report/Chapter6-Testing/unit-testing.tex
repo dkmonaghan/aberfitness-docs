@@ -1,26 +1,23 @@
 \section{Unit Testing}
 \par
-Unit testing provides a mechanism for developers to verify the behaviour of each component in isolation. Tests for each component gives the project an automated baseline which significantly reduces the chance of a logic or syntax error being merged into the codebase. The entire unit test suite is run as part of the pull request flow, reducing the chances of bugs or regressions entering the codebase.
+Unit testing provides a mechanism for developers to verify the behaviour of each component in isolation. Writing tests for each component gives the project an automated baseline, which significantly reduces the chance of a logic or syntax error being merged into the codebase. The entire unit test suite is run as part of the pull request flow, reducing the chances of bugs or regressions entering the codebase.
 
 \par
 \subsection{Framework Choices}
-.NET Core and Java both have a host of unit testing frameworks to choose from. In order to maintain consistency, it was decided that the a single framework would be used for all .NET Core applications and another single framework for every Java application. The development teams agreed on using \textit{xUnit}\cite{xUnit} for C\# and \textit{JUnit}\cite{JUnit} for JavaEE early into the project.
+\textit{.NET Core} and \textit{Java EE} both have a host of unit testing frameworks to choose from. In order to maintain consistency, it was decided that the a single framework would be used for all \textit{.NET Core} applications and another single framework for every \textit{Java EE} application. The development teams agreed on using \textit{xUnit}\cite{xUnit} for C\# and \textit{JUnit}\cite{JUnit} for \textit{Java EE} early into the project.
 
 \par
-For .NET applications we choose xUnit instead of \textit{MSTest} and \textit{NUnit}. Recent documentation and examples from Microsoft have focused on xUnit instead of MSTest. xUnit is less accessible initially but significantly more extensible which can simply test code through the use of the \textit{Theory} attribute.
+For \textit{.NET Core} applications, we choose xUnit instead of \textit{MSTest} and \textit{NUnit}. Recent documentation and examples from Microsoft have focused on xUnit instead of MSTest. xUnit is significantly more extensible through the use of the \textit{Theory} attribute, allowing a single test method to be written for multiple datasets.
 
 \par
-Additionally, xUnit extends upon principles found in NUnit with additional features, such as the ability to execute individual test methods \cite{Nunit_XUnit_comparison}. It also creates a new test instance for each fixture, ensuring that side effects do not propergate through a test suite. This prevents problems with ordering tests found in some software projects.
+Additionally, xUnit extends upon principles found in NUnit with additional features, such as the ability to execute individual test methods\cite{Nunit_XUnit_comparison}. It also creates a new test instance for each fixture, ensuring that side effects do not propergate through a test suite. This prevents problems with ordering tests found in some software projects.
 
 \par
-JUnit is an almost ubiquitous testing framework for Java for a few reasons. It has strong integration with other tools, such as Maven and various mocking frameworks, and documentation is widely available. Multiple versions exist so the Java teams chose to use version 5, as it is the latest stable release on JUnit.
+JUnit is an almost ubiquitous testing framework for \textit{Java EE} for a few reasons. It has strong integration with other tools, such as Maven and various mocking frameworks, and documentation is widely available. Multiple versions exist so the \textit{Java EE} teams chose to use version 5, as it is the latest stable release on JUnit.
 
 \subsection{Mocking}
 \par
-\textit{Moq}\cite{Moq} is used for mocking the persistence layer in .NET Core services. Controllers were written using the dependency injection pattern, thereby accepting a concrete type at construction time. Using Moq objects is extremely simple, developers instantiate their mock based on an interface then set up expectations, if any, and verify the calls.
+\textit{Moq}\cite{Moq} is used for mocking injected dependencies in \textit{.NET Core} services. Classes were written using the dependency injection pattern, accepting a concrete type at construction time. Using Moq objects is extremely simple; developers instantiate their mock based on an interface, then set up expectations, if any, and verify the calls.
 
 \par
-Java requires a slightly different approach, as an EJB cannot have arguments in its constructor. \textit{Mockito}\cite{Mockito} provides an alternative to dependency injection; developers create fields in the class which match the  types which are constructed in the EJB. These are annotated with `\textit{@mock}' and subsequently injected with `\textit{@injectMocks}' on the test instance. Mockito supports \textit{Hamcrest}\cite{Hamcrest} matchers which was also used to handle more complex assertions.
-
-\par
-As each unit test completes in a short time, seconds at the longest, these test suites can be run rapidly from the IDE or CLI. This formed a quality control mechanism which was run before all changes were accepted.
+\textit{Java EE} requires a slightly different approach, as an EJB cannot have arguments in its constructor. \textit{Mockito}\cite{Mockito} provides an alternative to dependency injection; developers create fields in the class which match the types which are constructed in the EJB. These are annotated with `\textit{@mock}' and subsequently injected with `\textit{@injectMocks}' on the test instance. Mockito supports \textit{Hamcrest}\cite{Hamcrest} matchers which were also used to handle more complex assertions.
