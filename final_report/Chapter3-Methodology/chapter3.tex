@@ -1,9 +1,9 @@
 \chapter{Development Methodology}
 
 \section{Initial Project Plan}
-As the project began, the group had a number of meetings in quick succession in order to come up with an initial plan.  One major point on the agenda was the development methodology to use - many group members wanted to take an agile approach, but were unsure of which flavour of agile to adopt.  After evaluating the most commonly used approaches, the \textit{Scrumban}\cite{scrumban} methodology was chosen.  \textit{Scrumban} combines the benefits of the Scrum and Kanban methodologies, allowing the group to split into smaller sub-groups to tackle individual services, visualise the outstanding work, and respond quickly to requirements changes. Additionally, \textit{Scrumban} is tailored for the difficulties around estimating each sprint or the current velocity, which would be particularly useful as nobody within the group had any experience with the required application frameworks, Java EE and .NET Core. 
+As the project began, the group had a number of meetings in quick succession in order to come up with an initial plan. One major point on the agenda was the development methodology to use - many group members wanted to take an agile approach, but were unsure of which flavour of agile to adopt. After evaluating the most commonly used approaches, the \textit{Scrumban}\cite{scrumban} methodology was chosen. \textit{Scrumban} combines the benefits of the Scrum and Kanban methodologies, allowing the group to split into smaller sub-groups to tackle individual services, visualise the outstanding work, and respond quickly to requirements changes. Additionally, \textit{Scrumban} is tailored for the difficulties around estimating each sprint or the current velocity, which would be particularly useful as nobody within the group had any experience with the required application frameworks, Java EE and .NET Core. 
 
-There were initially nine distinct microservices identified which would be required in order to meet the functional requirements.  Services were designated with a language in which they would be implemented. (Fig. \ref{fig:initial_spec_chart})
+There were initially nine distinct microservices identified which would be required in order to meet the functional requirements. Services were designated with a language in which they would be implemented. (Fig. \ref{fig:initial_spec_chart})
 
 \begin{figure}[H]
     \centering
@@ -12,7 +12,7 @@ There were initially nine distinct microservices identified which would be requi
     \label{fig:initial_spec_chart}
 \end{figure}
 
-Microservices were designated with a priority ranking between 1 and 3(Fig. \ref{fig:numbering_microservice_priority}).  Services which were critical to the core functionality of the entire system were assigned a priority of 1, an example of which is \textit{Health Data Repository} which is responsible for the central storage of all activity data within the system.  Services with less crucial functionality were assigned priority 2 or 3 as appropriate.
+Microservices were designated with a priority ranking between 1 and 3(Fig. \ref{fig:numbering_microservice_priority}). Services which were critical to the core functionality of the entire system were assigned a priority of 1, an example of which is \textit{Health Data Repository} which is responsible for the central storage of all activity data within the system. Services with less crucial functionality were assigned priority 2 or 3 as appropriate.
 
 \begin{figure}[H]
     \centering
@@ -24,7 +24,7 @@ Microservices were designated with a priority ranking between 1 and 3(Fig. \ref{
 
 \section{Supporting Tools}
 \subsection{GitHub \& TravisCI}
-\textit{GitHub}\footnote{https://github.com/sem5640-2018} was chosen as the version control host for all repositories, due to the vast array of features and tooling supported by the platform.  The use of \textit{GitHub} allowed easy integration with \textit{Travis CI} to automatically trigger the running of unit tests and the building of \textit{Docker} images, and additionally allowed the enforcement of code quality procedures such as requiring peer review of code before merging, and preventing merges of code with failing tests.  Integration with \texit{Slack} provided the group with instant notifications of events such as new pull requests and the status of \texit{Travis CI} builds.
+\textit{GitHub}\footnote{https://github.com/sem5640-2018} was chosen as the version control host for all repositories, due to the vast array of features and tooling supported by the platform. The use of \textit{GitHub} allowed easy integration with \textit{Travis CI} to automatically trigger the running of unit tests and the building of \textit{Docker} images, and additionally allowed the enforcement of code quality procedures such as requiring peer review of code before merging, and preventing merges of code with failing tests. Integration with \textit{Slack} provided the group with instant notifications of events such as new pull requests and the status of \textit{Travis CI} builds.
 
 \begin{figure}[H]
     \centering
@@ -38,7 +38,7 @@ Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_req
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/travis_builds_overview.png}
-    \caption{Example of \textit{Travis CI} running unit tests and building a \texit{Docker} image after a successful merge to the development branch.}
+    \caption{Example of \textit{Travis CI} running unit tests and building a \textit{Docker} image after a successful merge to the development branch.}
     \label{fig:travis_ui}
 \end{figure}
 
