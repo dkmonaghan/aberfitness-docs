@@ -5,7 +5,7 @@ Primarily, this microservice was fairly straightforward to develop. Most of the 
 
 One of the first and main issues that were identified was that of how the application would handle normalising data from Fitbit and potentially other activity data providers. After some investigation, it was found that the Fitbit API didn't have a consistent format in how it returned what type of activity the user had performed; for example, Fitbit could return \textit{"Skiing 5\% slope"} and \textit{"Skiing 10\% slope"}. This lack of generalisation among activity types was identified as something that would cause the platform issues should other ingest services be developed in the future. 
 
-Many solutions were discussed for this problem, such as having the application dynamically create activities as they were imported. Ultimately it was decided that the most robust solution which provided a consistent user experience would be to create a table which maps a variety of Fitbit activity identifiers onto a single \textit{Aber Fitness} activity (Fig. \ref{fig:health_mappings}). This idea was presented to the client and was implemented shortly after.
+Many solutions were discussed for this problem, such as having the application dynamically create activities as they were imported. Ultimately it was decided that the most robust solution which provided a consistent user experience would be to create a table which maps a variety of external API activity identifiers onto a single \textit{Aber Fitness} activity (Fig. \ref{fig:health_mappings}). This idea was presented to the client and was implemented shortly after.
 
 \begin{figure}[H]
     \centering
