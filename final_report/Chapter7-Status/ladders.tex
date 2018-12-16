@@ -3,3 +3,14 @@
     \includegraphics[width=\textwidth]{Images/service_ladders.png}
     \caption{A screenshot showing the administrative panel of a single Ladder featuring 9 users and an active challenge}
 \end{figure}
+
+Please see acceptance test table in Appendix 2, Section 0.2.9.
+
+A total of 38 acceptance tests are defined for the \textit{Ladders} microservice, as it features fairly complex interfaces with a lot of options. Of these 38 tests, only three have failed. Two of the three failing tests relate to users leaving ladders, and as such are less likely to be encountered by users than the other test cases.
+
+
+\begin{itemize}
+	\item When creating a ladder, the sport name is entered manually by a user rather than being a drop down
+
+	\item Artefacts are left behind when a user leaves a ladder, resulting in empty positions on the ladder
+\end{itemize}
