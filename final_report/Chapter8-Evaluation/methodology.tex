@@ -1,0 +1,21 @@
+\section{Development Methodology}
+\subsection{Evaluation}
+\par
+The group met for weekly meetings at the start of the project to layout and white-board a top level system design. These sessions were initially productive, as work was divided into teams and unified approach for the various components was decided. However as the meetings progressed their usefulness was questioned. Designing by committee would rapidly devolve into either a few interested parties talking about a single service, or every developer inputting an opinion on simple decisions.
+
+\par
+A vote unanimously agreed to change the group meeting into a session where developers would work in the same room implementing instead. This refocused teams onto their own design whilst allowing an individual to still propose system level questions or ideas in person. Productivity also rapidly increased as knowledge of common problems and solutions were shared amongst the group.
+
+\par
+Throughout the project there were instances where requirements were not clear; reasons ranged from multiple interpretations, noun and verb conflation, and not enough detail. Slack was used as a communication mechanism with the client. This allowed to choose an appropriate time to respond to requests, which could be sent at any time. As the communications were completed using a recorded medium an answer could be converted into an additional requirement later.
+
+\par
+As the project progressed Scrumban, which was selected as the development methodology, was skipped increasingly. Initially project boards weren't updated or tracked, and work was completed without an associated issue or project board entry. As there were eight members of the group it became difficult to track what work individual teams had remaining. Ultimately this lead to deadlines being missed as teams had to estimate their work left to complete rather than having a metric to rely on.
+
+\par
+As the scope of each units' work was not defined branches would contain multiple features and fixes. Pull requests could alternate between being too large to sensibly review, or a single fix spread across several. Additionally developers would typically review within a team, instead of examining other services code. This lead to code reviews being approved without the approver checking. Later this culminated into several simple bugs which potentially would have been spotted, such as incorrect equality comparisons, being merged into the code base.
+
+\subsection{Future Improvements}
+    - Make a primary role for a team leader
+        -- Scrumban worked when it was enforced
+        -- Force people from outside the dev. team to review

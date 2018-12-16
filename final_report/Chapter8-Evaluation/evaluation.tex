@@ -1,0 +1,19 @@
+\section{Future Improvements}
+
+- \\TODO Blocked on status
+
+- Integration Testing
+
+\section{Fitness for purpose}
+    \subsection{Functional Requirements}
+    \par
+    Based on the client's criteria we have fulfilled the majority of functional requirements, as seen in \ref{Requirements_chpt}. This was measured using acceptance tests which give a rough indication of conformity to the requirements. \\TODO tests were performed with \\TODO failing, giving a \\TODO \% final pass rate.
+
+    \subsection{Design Constraints}
+    \par
+    Our application stack makes use of both Java EE and .NET Core, as per the design constrains. These languages also provide access to many frameworks and third party implementation through Nuget and Maven. 
+    
+    \par
+    By carefully checking the license of all external code and finding alternatives where required, the system is completely free of proprietary software and licensing considerations. Additionally, this reliance on external packages for core components,such as \textit{Identity Server} for authorization, reduces the sites future maintenance overhead.
+
+    Finally, deployable docker images were created for each microservice which ran on the destination server. This would also allow the system to scale the number of instances based on an individual service's load in the future.
