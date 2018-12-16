@@ -1,0 +1,19 @@
+\section{SignalR}
+
+\subsection{Overview}
+
+SignalR is a set of libraries available for both .NET Core, and .NET Framework, which allows the relatively simple implementation of real time communication between clients and servers via a variety of transports such as WebSockets or Long Polling\cite{SignalR}. Clients and servers communicate via a SignalR Hub, which allows them to remotely invoke methods on each other, including the passing of strongly typed parameters. Such a library has many potential uses, particularly for features such as real-time notifications to logged-in users, or automatic updating of dashboard pages - both of which are applicable to \texit{Aber Fitness}.
+
+\subsection{Investigation}
+
+During the investigation into SignalR, we followed a number of tutorials available as part of the SignalR documentation.
+
+In hindsight, further investigation into the work required to make use of SignalR functionality may have made it feasible for it to be introduced from the start of the project.
+
+There is, however, the issue of authentication and authorization within SignalR which was not investigated as part of this work. Before beginning any work, consideration would need to be made as to whether or not it is feasible to use the existing security mechanisms employed elsewhere within \texit{Aber Fitness}. Should this not be possible, the use of SignalR may not be possible without major modifications to the rest of the system.
+
+\subsection{Work Required}
+
+Although utilising the functionality of SignalR appears from a distance to be relatively simple, we ultimately decided to first focus on implementing the required core functionality of the system rather than directing development resources to desirable yet non-critical functionality.
+
+It would be possible to modify the services within \texit{Aber Fitness} to make use of this functionality in the future. In particular, the \textit{Communications} microservice could take on the additional role of acting as the SignalR hub. Services which already send email notifications, such as \textit{Health Data Repository}, could be modified to also send SignalR notifications to interested clients. Clients such as the \textit{Health Dashboard} could be used to either display those notifications to users, or update the statistics on the dashboard automatically without requiring the user to manually refresh the page to see new data.
