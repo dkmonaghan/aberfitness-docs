@@ -3,7 +3,7 @@
 Most of the microservices provide internal APIs, which were not designed for external usage. To protect these endpoints, the OAuth 2.0 flow was used to authorize application interactions using client credentials. While unit testing ensures each API correctly responds according to its documented behaviour, it does not exercise all components that partake in an interaction.
 
 \par
-As REST endpoints were used as the primary message exchange method, we could send and request JSON payloads to ensure the system behaved as expected. Multiple third party solutions were used for testing APIs, such as the \textit{Insomnia REST Client}\cite{insomnia}. %TODO add reference here
+As REST endpoints were used as the primary message exchange method, we could send and request JSON payloads to ensure the system behaved as expected. Multiple third party solutions were used for testing APIs, such as the \textit{Insomnia REST Client}\cite{insomnia}.
 
 \par
 These tools were used to ensure that malformed requests or interaction with no authorization token were correctly handled. These tools could also handle the OAuth flow on a developers behalf, which was extremely useful when debugging interactions between applications and resolving digression from the API specification files.
