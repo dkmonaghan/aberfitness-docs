@@ -1,27 +1,27 @@
 \subsubsection{MVC Architecture}
 \par
-The core architecture, followed the MVC style recommended by .NET Core. The initial design was done by creating the models and defining how they would interact. Below are the core models which where outlines the core layout.
+The core architecture followed the MVC style recommended by .NET Core. The initial design was done by creating the models and defining how they would interact. Below are the core models which where outlines the core layout.
 
 \begin{itemize}
 
-	\item The first model was the profile, this was used to store information regarding availability and a preferred location as user facing information. This model was used to link the user to their position and current ladders they are requesting to join.
+	\item The first model was the profile, this was used to store information regarding the user's availability and a preferred location. This model was used to link the user to their position and ladders they are requesting to join.
 
-	\item The second model was the ladder, this was used a repository to store a collection of users. The user facing information is the ladder name. Internally it holds a reference to all the position objects which are related to the ladder. It also holds reference to all the users which are requesting to join the ladder who need approving.
+	\item The second model was the ladder, this was used as a repository to store a collection of users. The user facing information is the ladder name. Internally, it holds a reference to all the position objects which are related to the ladder. It also holds reference to all the users which are requesting to join the ladder who are awaiting approval.
 
-	\item The third model is the position. This is used to link a user profile to a ladder, it is not visible to the user but is a critical link between a user and the ladder. It also stores the current position in the respective ladder and any challenges they are or have been involved in.
+	\item The third model is the position. This is used to link a user profile to a ladder, it is not visible to the user but is a critical link between a user and the ladder. It also stores the current position in the respective ladder and any challenges they are, or have been, involved in.
 
-	\item The fourth model is the challenges. This is used to store information referencing, the user that was challenged, who challenged them, booking details, timing information and current status. This is used to track past and pending challenges for a user. They are tied to a user’s position model, so allow updating of results after a challenge has been resolved.
+	\item The fourth model is the challenges. This is used to store information referencing the user that was challenged, who challenged them, booking details, timing information and current status. This is used to track past and pending challenges for a user. They are tied to a user’s position model, allowing updating of results after a challenge has been resolved.
 
-	\item The final models are used for storing booking details. This data sent from booking facilities after a challenge has been created. The booking model stores information relevant to the new booking, such as the venue and sport, it also stores the booking Id which is stored in the case when the booking may be freed up such as if a user concedes a match before the arranged booking time.
+	\item The final models are used for storing booking details. This data is sent from the \textit{Booking Facilities} microservice after a challenge has been created. The booking model stores information relevant to the new booking, such as the venue and sport. It also stores the booking ID, which is stored in the case when the booking may be freed up such as if a user concedes a match before the arranged booking time.
 
 \end{itemize}
 
 \par
-The design although complicated is required for the intricacies of the requirements specification. The design allowed for some flexibility in rankings, as the results of all matches are stored as well as positioning, it means the mechanism could be switched after a ladder has been created. The number of edge cases are handled in the challenge or ranking repository files, this keeps all logic in a single point removing duplication and helping maintainability.
+The design, although complicated, is required for the intricacies of the requirements laid out in the specification. The design allowed for some flexibility in rankings, as the results of all matches are stored as well as positioning. This means the mechanism could be switched after a ladder has been created. The number of edge cases are handled in the challenge or ranking repository files, this keeps all logic in a single point reducing duplication and helping maintainability.
 
 \subsubsection{User Interface}
 \par
-The Ladders microservice is a heavily user facing service, so this was a primary focus. The user has three core sections to view, these include: viewing ladders, viewing profiles and viewing challenges. The core template uses a Bootstrap 4 theme which is used throughout the site to keep the user interface consistent for the end user.
+The Ladders microservice is a heavily user facing service, so this was a primary focus. The user has three core sections to view and interact with: viewing ladders, viewing profiles and viewing challenges.
 
 \par
-Each of the three core views required the basic CRUD (create, read, update and delete) these where scaffolded using Entity Framework, which helped creating a rapid prototype of the application. The challenges area required an additional concede view, for confirming they wish to automatically give the other user the win. The ladders required a few extra views: A view to allow the user to join the ladder, approve users who wish to join the ladder and an interface to remove a user
+Each of the three core views required the basic CRUD (create, read, update and delete) operations. These were scaffolded using .NET Core Entity Framework, which helped creating a rapid prototype of the application. The challenges area required an additional concede view, for confirming they wish to automatically give their competitor the win. The ladders required a few extra views: A view to allow the user to join the ladder, approve users who wish to join the ladder, and an interface to remove a user.
