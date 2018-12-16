@@ -2,13 +2,15 @@
 
 - \\TODO Blocked on status
 
-- Integration Testing
+    \subsection{Localisation}
+    \par
+    Localisation was a system level requirement which was not completed. It was kept in mind during the start of the project, but no work preparing the view was in place. In future projects we would use code reviews to make sure views are prepared for localisation, before the barrier to entry becomes too high.
+
+    \subsection{Automated Testing}
+    \par
+    Additional development time for writing automated integration tests would have reducing the ongoing maintenance costs associated with the system. Currently all endpoints are tested manually; whilst the time spend testing did not outweigh the time writing tests in this instance, in the long term the cost-benefit would pay off.
 
 \section{Fitness for purpose}
-    \subsection{Functional Requirements}
-    \par
-    Based on the client's criteria we have fulfilled the majority of functional requirements, as seen in \ref{Requirements_chpt}. This was measured using acceptance tests which give a rough indication of conformity to the requirements. \\TODO tests were performed with \\TODO failing, giving a \\TODO \% final pass rate.
-
     \subsection{Design Constraints}
     \par
     Our application stack makes use of both Java EE and .NET Core, as per the design constrains. These languages also provide access to many frameworks and third party implementation through Nuget and Maven. 
@@ -17,3 +19,7 @@
     By carefully checking the license of all external code and finding alternatives where required, the system is completely free of proprietary software and licensing considerations. Additionally, this reliance on external packages for core components,such as \textit{Identity Server} for authorization, reduces the sites future maintenance overhead.
 
     Finally, deployable docker images were created for each microservice which ran on the destination server. This would also allow the system to scale the number of instances based on an individual service's load in the future.
+
+\subsection{Functional Requirements}
+    \par
+    Based on the client's criteria we have fulfilled the majority of functional requirements, as seen in \ref{Requirements_chpt}. This was measured using acceptance tests which give a rough indication of conformity to the requirements. 129 tests were performed with 12 failing, meeting 90.7 \% of the requirements.
