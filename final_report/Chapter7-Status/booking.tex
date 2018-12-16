@@ -3,3 +3,15 @@
     \includegraphics[width=\textwidth]{Images/service_bookings.png}
     \caption{A screenshot from the Bookings microservice, where an administrator is able to view all bookings currently in the system}
 \end{figure}
+
+Please see acceptance test table in Appendix 2, Section 0.2.2.
+
+All functionality within the \textit{Booking and Facilities} microservice was successfully implemented as per the project specification and requirements. Of the 32 defined acceptance tests, all 32 have passed.
+
+There are two known bugs, listed below:
+
+\begin{itemize}
+	\item Venue deletion "are you sure?" view doesn't specifically mention about also deleting associated facilities
+
+	\item As an admin on the Index page, all bookings are shown to be made by "unknown user". This was working previously but since implementing the "unknown user" functionality, the user is only visible from the booking's delete page.
+\end{itemize}

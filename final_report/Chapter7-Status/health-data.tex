@@ -3,3 +3,7 @@
     \includegraphics[width=\textwidth]{Images/service_health_data_repository.png}
     \caption{The Health Data Repository service also features an administrative interface to allow system administrators to edit or delete user activity data}
 \end{figure}
+
+Please see acceptance test table in Appendix 2, Section 0.2.8.
+
+Ten acceptance tests are defined for the \textit{Health Data Repository} microservice. All of the tests relating to the microservice's most important functionality, storing data, pass successfully. The two failing tests relate to email updates which are sent to users to remind them to update their data; while these emails are successfully generated and sent, the frequency at which these emails is not customisable within the user interface by an administrator. 

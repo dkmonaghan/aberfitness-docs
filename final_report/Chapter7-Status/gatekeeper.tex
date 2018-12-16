@@ -3,3 +3,13 @@
     \includegraphics[width=\textwidth]{Images/service_landing_page.png}
     \caption{Gatekeeper is responsible for serving up the landing page, which features a user log in form and the ability for users to register to join Aber Fitness}
 \end{figure}
+
+Please see acceptance test table in Appendix 2, Section 0.2.5.
+
+The \textit{Gatekeeper} service, at its core, was only required to authenticate users and API endpoints. As such its additional functionality, such as two-factor authentication and password resets, are not listed in the acceptance test table. 
+
+At time of release, there is one outstanding issue with \textit{Gatekeeper}: 
+
+\begin{itemize}
+	\item Administrator can change their own user type to something other than administrator, leaving the system with no administrator.
+\end{itemize}
