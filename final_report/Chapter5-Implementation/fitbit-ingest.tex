@@ -1,47 +1,48 @@
 \subsubsection{OAuth2.0 Connection}
 
 \par
-The primary purpose of this application was to connect to the Fitbit Web API and gain the ability to pull our users Fitbit Account data if they provide access. Because of this we knew from day one that we would need to make use of OAuth2.0.
+The primary purpose of this application was to connect to the Fitbit Web API and gain the ability to pull users' activity data. From the beginning of the project, it was known that the service would need to interact with Fitbit's OAuth endpoint and a suitable Java library would need to be used.
 \par
-To achieve this we used a OAuth library called \textit{Scribe_Java}\cite{ScribeJava}. We came to this decision during the spike work as this library made connecting to Fitbit's API easier as it has Fitbit as one of its built in Services. This library provides and OAuthService object which handles generating Http Requests to the OAuth provider.
+An OAuth library called \textit{Scribe Java}\cite{ScribeJava} was used during the spike work as this library made connecting to Fitbit's API easier due to its native Fitbit integration. This library provides and OAuthService object which handles generating HTTP Requests to the OAuth provider.
 \par
-When it came to integrating with the Gatekeeper the OpenId provider micro service we decided to also use the \textit{Scribe_Java}\cite{ScribeJava} library. The library also offers the ability to define your own OAuth provider API to connect to. So to do this a Gatekeeper API definition was written that allowed us to instantiate service objects that would work with the Gatekeeper API.
+When it came to integrating with the Gatekeeper, the Aber Fitness OpenID provider,  the \textit{Scribe Java}\cite{ScribeJava} library was also used. The library also offers the ability to define a custom OAuth provider API to connect to. To achieve this, a Gatekeeper API definition was written that allowed the creation of service objects that would work with the Gatekeeper API.
 \par
-Towards the end of the project we did notice that the Payara API also offers and OpenId implementation which would have made connecting to gatekeeper much easier. The Payara API also offers the ability to secure pages and API endpoints by just using annotations on the classes. But by the time we realised that this is possible there wasn't much time left. But if we were to have more time we would switch to using this for gatekeeper authentication.
+Towards the end of the project, it was noticed that the \textit{Payara}\cite{payara} API also offers an OpenID implementation which would have made connecting to Gatekeeper much easier. The Payara API also offers the ability to secure pages and API endpoints by just using annotations on the classes. But by the time this was realised, there was little development time remaining, and as such the native Payara OpenID solution was not implemented.
 
 \subsubsection{Entity Management}
 
 \par
-To get the ball rolling on development we were using a connecting to a database directly in the persistence.xml using the \textit{Hibernate ORM}\cite{Hibernate}. But once we figured out using the Entity Manager in Java EE we switched to creating a connection pool and resource in glassfish. To start with these where set-up in the administrator console on glassfish. When it came to development we had to figure out how to structure glassfish-resources.xml which will create the resource's when the application is deployed onto Payara.
-
+During initial spike work, database connections were made directly in the persistence.xml using the \textit{Hibernate ORM}\cite{Hibernate}. Once full development began, the Entity Manager in Java EE was used, and so a connection pool was created within \textit{Glassfish}\cite{glassfish}. The \textit{glassfish-resources.xml} file needed to be configured correctly such that resources would be created correctly when the application was deployed onto Payara.
 
 \subsubsection{REST API Implementation}
 
 \par
-Fitbit ingest implements API endpoints by having an Servlet per endpoint, this was done because there where only 4 endpoints in total.
+The Fitbit Ingest Service implements API endpoints with a Servlet per endpoint. This was done because there are only 4 endpoints in total.
 
 \begin{itemize}
-	\item \textbf{'LoginPage' Endpoint -} This endpoint is used to authenticate with Fitbit, we implemented this by first doing the full OAuth flow with Gatekeeper. Once we did this we performed the OAuth flow with Fitbit. And then in the Fitbit Ingest database a record is created or updated mapping the User Id we got from Gatekeeper to a Fitbit Access and Refresh Token. If a record with the Gatekeeper UId already exists it is updated.
-	\item \textbf{'Prompt' Endpoint -} This endpoint is used to trigger a Fitbit data access. This was intended to be used so that a user can manually trigger the accessing of data. In the end this endpoint hasn't been used but has become useful when testing and trying to fix bugs.
-	\item \textbf{'Check' Endpoint -} This endpoint is used to check if a user has given Aber Fitness access to there Fitbit data. This endpoint takes a user id and checks if there is a DB record with that user id.
-	\item \textbf{'Status' Endpoint -} This endpoint doesn't do much it simply returns a 200 status code.
+	\item \textbf{'LoginPage' Endpoint} - This endpoint is used to authenticate with Fitbit. It was implemented by first doing the full OAuth flow with Gatekeeper. Once this stage is complete, the OAuth flow with Fitbit is then performed. When the user's browser is returned back to the service after Fitbit has authenticated them, a record is stored or updated in the database mapping Gatekeeper User IDs to Fitbit access and refresh tokens.
+
+	\item \textbf{'Prompt' Endpoint} - This endpoint is used to trigger a Fitbit data access. This was implemented so that a user can manually trigger the accessing of data. Ultimately, this endpoint was never made production ready, but did prove useful when testing and trying to fix bugs.
+
+	\item \textbf{'Check' Endpoint} - This endpoint is used to check if a user has given Aber Fitness access to their Fitbit data. This endpoint takes a user id and checks if there is a DB record with that user id.
 \end{itemize}
 
 \subsubsection{Fitbit Data Collection}
 
 \par
-Fitbit ingest has a Scheduling bean that runs every hour to collect data, it retrieves all Token Mapping records from the database. Fitbit ingest then starts 4 threads that run through all registers users and collects Fitbit data. We do also check for when this last happened by using a time stamp in the database that represents the last time we talked to Fitbit on there behalf.
+Fitbit ingest has a Scheduling bean that runs every hour to collect data; it retrieves all Token Mapping records from the database, then starts 4 threads that run through all registered users and collects Fitbit data.
 
 \par
-Fitbit has a restriction on the data you can access from there API without specific authorization from them. This meant that the only data we could access is steps per day. This wasn't discovered though until most of the system was implemented. This was a problem for us though as we designed the system to get data per hour, so we did need to make some change to the data collection so we could switch to collection by day. And make sure that we only collect data once a day has finished. This introduced an edge case bug where if a user doesn't sync there device with Fitbit before the end of the day the data will never be seen by us.
+Fitbit has a restriction on the data you can access from there API without specific authorization from Fitbit themselves. This meant that the only data we could access is steps per day. This wasn't discovered though until most of the system was implemented, and proved to be a problem as the system was designed to collect step data per hour. As a result of this, changes were needed to the data collection process to instead support collection per day. A flag was then updated against the user in the database which records the last time this user's data was updated. This introduced an edge case bug whereby if a user doesn't sync their device with Fitbit before the end of the day, then the data will never be picked up by Aber Fitness.
 
 \subsubsection{Unit Testing}
 
 \par
-For unit testing Fitbit ingest is using Mockito and JUnit, we have unit test for the JSON parsing and also for the persistence code within the application.
+Mockito and JUnit are used for unit testing; there are unit tests for the JSON parsing as well as the persistence code within the application.
 
 \begin{itemized}
-	\item \textbf{JSON Parsing Test -} This test just parses some sample Fitbit JSON so that we know that we can successfully parse the JSON we will receive.
-	\item \textbf{Persistence Tests -} These tests are designed to test the persistence code that we wrote. Although the scope of these test has changed due to updates to the persistence layer, but neglected to update the tests. Although these test are still slightly useful. The tests use an in memory \textit{H2 database}\cite{H2} and run through all the possible actions on the database.
+	\item \textbf{JSON Parsing Test} - This test parses some sample Fitbit JSON to ensure that JSON received can be correctly interpreted by the service.
+
+	\item \textbf{Persistence Tests} - These tests are used test the persistence code. The scope of these tests has changed due to updates to the persistence layer, but neglected to update the tests. The tests use an in memory \textit{H2 database}\cite{H2}, and run through all the possible actions on the database.
 \end{itemized}
 
