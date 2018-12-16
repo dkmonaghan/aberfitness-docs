@@ -20,14 +20,18 @@ docker cp aberfitness.tar tempubuntu:/certs
 
 Inside the docker container, extract the certificates
 ```sh
+mv /certs
 tar -xf aberfitness.biz
 ```
 The SSL certificates should now exist within the temporary container at `/certs/aberfitness.biz/fullchain.cer` and `/certs/aberfitness.biz/aberfitness.biz.key`.
 
 Create the certificates required by all .NET containers:
+**Replace every occurance of `httpscertpassword` with the password you set in your `.env` files**
 ```sh
 mkdir /certs/shared
 cd /certs/shared
+apt update
+apt install openssl
 openssl genrsa -des3 -passout pass:httpscertpassword -out https.key 2048
 openssl rsa -passin pass:httpscertpassword -in https.key -out https.key
 openssl req -sha256 -new -key https.key -out https.csr -subj '/CN=localhost'
@@ -41,7 +45,7 @@ Create the certificates required by Gatekeeper:
 mkdir /certs/gatekeeper
 cd /certs/gatekeeper
 ```
-Follow the instructions at https://github.com/sem5640-2018/gatekeeper/blob/development/docs/certificates.md to generate the required certificates inside `/certs/gatekeeper`
+Follow the instructions at https://github.com/sem5640-2018/gatekeeper/blob/master/docs/certificates.md to generate the required certificates inside `/certs/gatekeeper`
 
 Clean up the temporary container you used
 ```
