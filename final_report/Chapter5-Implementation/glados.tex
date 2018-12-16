@@ -1,6 +1,6 @@
 \subsubsection{REST API}
 \par
-The primary role of GLaDOS is to store audit data so that users can view how their data was viewed and modified. Whilst there are native implementations, such as the Java Messaging Service, these require the calls be proxied into a local JVM instance to handle the transport component. We chose to serialise into JSON and use REST as the transport mechanism as all applications had native support for this set up. In addition to this, GLaDOS also offers a page which displays the status of all the microservices within the system.
+The primary role of GLaDOS is to store audit data so that users can view how their data was viewed and modified. Whilst there are native implementations, such as the Java Messaging Service, these require the calls be proxied into a local JVM instance to handle the transport component. We chose to serialise audit data into JSON and use REST as the transport mechanism as all applications had native support for this set up. In addition to this, GLaDOS also offers a page which displays the status of all the microservices within the system.
 
 \par
 \textit{JAX-RS} is an API specification for JSON parsing in Java, additionally Payara provides \textit{Jersey} as the implementation of this API at runtime. This avoided us having to package additional dependencies into the web archive. This also allows us to build standard response pages based on the error code internally generated, avoiding having to develop error views.        
@@ -31,7 +31,7 @@ This service only persists Audit Data, therefore we ultimately need to persist a
 Instead we relied on the persistence layer provided in the EE specification. Using the connection pools which were set up for both Java services (see \ref{JTA_Targets}), we could specify which JTA the injected entity manager should use.
 
 \par
-The table schema is managed through annotations on an entity class. This also allows the implementation provided by Payara, \textit{EclipseLink}, to create the tables required at deployment time. As the framework relies on the field types to determine which underlying storage to use there is a hidden pitfall. If the type does not have a native serialisation Java will try to persist this using binary data.
+Table schemas are generated based on entity annotations. This also allows the implementation provided by Payara, \textit{EclipseLink}, to create the tables required at deployment time. As the framework relies on the field types to determine which underlying storage to use there is a hidden pitfall. If the type does not have a native serialisation Java will try to persist this using binary data.
 
 \par
 Instants are used to specify timestamps on logs, these are cross compatible as they use \textit{ISO 8601}, a string specifier for absolute time points. This format allows both .NET Core and Java application to send timestamps using the time since POSIX epoch in milliseconds. However as this type was added in JDK 8 there is no native storage conversion built into the entity framework.
