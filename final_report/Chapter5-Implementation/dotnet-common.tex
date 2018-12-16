@@ -1,1 +1,8 @@
-Unlike the Java EE implementation process .NET Core was much easier to work with, and as a result we decided to build the majority of our microservices using .NET Core. Creating our \textit{Dockerfile}s and Travis configuration files for .NET Core microservices took a relatively short amount of time compared to the issues faced with Java EE deployment, and as a result we were able to get .NET Core microservices deployed and online weeks ahead of the Java EE microservices.
+\par
+Unlike the Java EE implementation process .NET Core was much easier to work with, and as a result we decided to build the majority of our microservices using .NET Core. 
+
+\par
+Creating our \textit{Dockerfile}s and Travis configuration files for .NET Core microservices took a relatively short amount of time compared to the issues faced with Java EE deployment, and as a result we were able to get .NET Core microservices deployed and online weeks ahead of the Java EE microservices.
+
+\par
+All microservices use the \textit{Pomelo EntityFrameworkCore MySQL connector}\cite{Pomelo}. This allows the native entity framework to work with MySQL instance APIs, which MariaDB provides.
