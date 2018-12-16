@@ -23,7 +23,6 @@ INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppL
 INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppLinkId, IconName, Priority) VALUES (11, 'Input Data	', '/dashboard/home/input', 0, 1, 'wpforms	', 400);
 INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppLinkId, IconName, Priority) VALUES (12, 'Remove Data', '/dashboard/home/removedata', 0, 1, 'trash', 9000);
 INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppLinkId, IconName, Priority) VALUES (13, 'Rankings', '/dashboard/home/rankings', 0, 1, 'trophy', 300);
-INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppLinkId, IconName, Priority) VALUES (14, 'Admin', '/dashboard/home/admin', 2, 1, 'wrench', 10000);
 INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppLinkId, IconName, Priority) VALUES (15, 'Group Challenges', '/challenges/challengesManage', 0, 8, 'group', 200);
 INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppLinkId, IconName, Priority) VALUES (16, 'User Challenges', '/challenges', 0, 8, 'user', 100);
 INSERT INTO `layout-service`.AppSubLink (Id, DisplayName, Uri, AccessLevel, AppLinkId, IconName, Priority) VALUES (17, 'Activities', '/challenges/activities', 1, 8, 'futbol-o', 5000);
