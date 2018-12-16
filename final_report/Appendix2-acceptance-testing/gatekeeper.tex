@@ -1,0 +1,13 @@
+\begin{longtable}{ |l|p{3cm}|l|p{5cm}|p{5cm}|l|p{6.5cm}|}
+\hline
+\textbf{FR\#}	&	\textbf{Requirement} & \textbf{AT\#}	&	\textbf{Description} & \textbf{Test} & \textbf{Pass/Fail} &	\textbf{Comments} \\
+\hline
+\endhead
+
+UM-FR-1 & The system with authenticate users and manage access based on user type & UM-AT-1 & Attempt to access Aber Fitness without logging in & Reset local cookie or switch to a private session, attempt to access Aber Fitness. Check that you are redirected to a login page & Pass &  \\ \hline
+UM-FR-1 & The system with authenticate users and manage access based on user type & UM-AT-2 & Attempt to access an administrator page as a user & As a user try to access an administrator page such as '/health-data-repository/ActivitiesManagement' check a 401 is returned & Pass & The access denied page doesn't show. Seems like issue with HDR though \\ \hline
+UM-FR-1 & The system with authenticate users and manage access based on user type & UM-AT-3 & Attempt to access an administrator page as an administrator & As an administrator try to access an administrator page such as '/health-data-repository/ActivitiesManagement' check that the page loads correctly & Pass &  \\ \hline
+UM-FR-1 & The system with authenticate users and manage access based on user type & UM-AT-4 & Logging out should log you out across the site & As a logged in user click Log out, ensure you sign out from the site correctly & Pass &  \\ \hline
+
+
+\end{longtable}

@@ -1,0 +1,17 @@
+\begin{longtable}{ |l|p{3cm}|l|p{5cm}|p{5cm}|l|p{6.5cm}|}
+\hline
+\textbf{FR\#}	&	\textbf{Requirement} & \textbf{AT\#}	&	\textbf{Description} & \textbf{Test} & \textbf{Pass/Fail} &	\textbf{Comments} \\
+\hline
+\endhead
+
+DG-FR1-2 & The system provides a way to add users to a group & UG-AT-1 & A user should be able to add themselves to a group & Add a user account, allow the user to select their group. Check they are added successfully & Pass &  \\ \hline
+DG-FR1-3 & Groups should have a name associated & UG-AT-2 & A group should have a name & As an administrator add a group with a name, check that group is visible & Pass &  \\ \hline
+DG-FR1-3 & A user should only be a member of a single group & UG-AT-3 & A user should not be able to add themselves to another group if they already belong to one & Add a user to one group, ensure you cannot add yourself to another group & Pass &  \\ \hline
+DG-FR1-4 & An administrator should be able to change the name of a group & UG-AT-4 & Renaming a group name should work & As an administrator, rename an existing group and check the name is saved & Pass &  \\ \hline
+DG-FR1-5 & A user should be able to leave a group they belong the to & UG-AT-5 & A user should be able to leave a group & Take a user belonging to a group, ensure that they can leave the group they belong to. & Pass &  \\ \hline
+DG-FR2-2 & The system provides a way to add exercise categories on a group-by-group basis & UG-AT-6 & An existing group should provide an option to add a category of data to a group & Open an existing group, choose a sport category to add to the group. Check this persists. & Fail & No functionality for this \\ \hline
+DG-FR2-3 & The system will allow administrator to choose which categories of data can be stored for a user group & UG-AT-7 & Choose which data types are allowed to be stored in a user group & As an administrator allow one type of data in a group, and disallow another type such as swimming and running data. Attempt to add data from both categories and ensure the revelant categories are accepted and rejected. & Fail & No functionality for this \\ \hline
+DG-FR-10 & A user can exist in the system without being part of a group & UG-AT-8 & Users should be able to exist independently of groups & Add a new user without joining a group & Pass &  \\ \hline
+
+
+\end{longtable}

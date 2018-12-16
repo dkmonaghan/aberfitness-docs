@@ -1,0 +1,103 @@
+\begin{longtable}{ |l|p{3cm}|l|p{5cm}|p{5cm}|l|p{6.5cm}|}
+\hline
+\textbf{FR\#}	&	\textbf{Requirement} & \textbf{AT\#}	&	\textbf{Description} & \textbf{Test} & \textbf{Pass/Fail} &	\textbf{Comments} \\
+\hline
+\endhead
+
+
+BS-FR1-1 & Facilities - manage venues/facilities/sports link & BS-AT-1 & As an admin - a link will be available on the bookings webpage to manage facilities, sports and venues. When this is pressed the admin will be redirected to the facilities management webpage. & When an admin presses the "manage facilities/venues/sports" link, brings up the management page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - manage facilities & BS-AT-2 & As an admin - once redirected to the management page, a list of facilities will be available (can be empty) & A list of facilities should be present. This list can be empty if no facilities have been entered, this may be blank. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - manage venues link & BS-AT-3 & As an admin - A link will be available on the facilities and sports webpages to redirect the admin to the manage venues page.  & When the link is clicked by the admin, it should bring up the venues page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - manage sports link & BS-AT-4 & As an admin - A link will be available on the venues and facilities webpages to redirect the admin to the manage sports page.  & When the link is clicked by the admin, it should bring up the sports page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - manage facilities link & BS-AT-5 & As an admin - A link will be available on the venues and sports webpages to redirect the admin to the manage facilities page.  & When the link is clicked by the admin, it should bring up the facilities page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - add venue link & BS-AT-6 & As an admin - when viewing the list, an add venue link will be available. When this is pressed the admin will be redirected to the add venue webpage. & When viewing the list of venues, click the add button. This should redirect the admin to an add venue page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - add venue & BS-AT-7 & As an admin - The add venue webpage will contain a form. This form will enable the user to add a venue name e.g. Old Sports Hall. Once this has been entered, the confirm button can be pressed and, if the venue name doesn\'t already exist, the new venue should be added. If the venue name already exists, the user will be alerted. If the user clicks cancel nothing will change. & 1. User enters name that already exists. Click Confirm. User will be alerted (nothing will change). 2. User adds name. Click Cancel (nothing will change). 3. User enters name that doesn\'t exist. Click Confirm. Venue will be added. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - remove venue & BS-AT-8 & As an admin - when viewing the list of venues, a remove venue link will be available. Pressing this will alert the user that they are about to remove the venue and all facilities linked to said venue. If the user clicks confirm then the venue will be removed. If the user clicks cancel, nothing will change. & 1. User clicks remove venue. Click Cancel (nothing will change). 2. User clicks remove venue. Click Confirm. Venue and linked facilities should be removed. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - update venue link & BS-AT-9 & As an admin - when viewing the list, an update venue link will be available for each venue. When this is pressed the admin will be redirected to the update venue webpage for that venue. & When viewing the list of venues, click the update button. This should redirect the admin to an update venue page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - update venue & BS-AT-10 & As an admin - The update venue webpage will contain a form. This form will enable the user to change the venue name e.g. New Sports Hall. Once this has been entered, the confirm button can be pressed and, if the venue name doesn\'t already exist, the updated venue should be stored. If the venue name already exists, the user will be alerted. If the user clicks cancel nothing will change. & 1. User clicks update venue. User changes name to name that already exists. Click Confirm. User will be alerted (nothing will change). 2. User clicks update venue. User changes name. Click Cancel (nothing will change). 3. User clicks update venue. User changes name to that doesn\'t exist. Click Confirm. Venue name will be changed. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - add facility link & BS-AT-11 & As an admin - when viewing the list, an add facility link will be available. When this is pressed the admin will be redirected to the add facility webpage. & When viewing the list of venues, click the add button. This should redirect the admin to an add venue page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - add facility & BS-AT-12 & As an admin - The add facility webpage will contain a form. This form will require the selection of a venue (e.g. Old Sports Hall), a facility name (e.g. Court 1) and a list of sports that can be played (e.g. squash, tennis). Once this has been entered, the confirm button can be pressed and, if the facility name doesn\'t already exist for this venue, the new venue should be added. If the facility name already exists for this venue, the user will be alerted. If the user clicks cancel nothing will change. & 1. User enters name that already exists in facilities. Click Confirm. User will be alerted (nothing will change). 2. User adds name. Click Cancel (nothing will change). 3. User enters name that doesn\'t exist in venue. Click Confirm. Facility will be added. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - remove facility & BS-AT-13 & As an admin - when viewing the list of facilities, a remove facility link will be available. Pressing this will alert the user that they are about to remove the facility. If the user clicks confirm then the facility will be removed. If the user clicks cancel, nothing will change. & 1. User clicks remove facility. Click Cancel (nothing will change). 2. User clicks remove facility. Click Confirm. Facility should be removed. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - update facility link & BS-AT-14 & As an admin - when viewing the list, an update facility link will be available for each facility. When this is pressed the admin will be redirected to the update facility webpage for that facility. & When viewing the list of facilities, click the update button. This should redirect the admin to an update facility page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - update facility & BS-AT-15 & As an admin - The update facility webpage will contain a form. This form will enable the user to change the facility name e.g. Court 2. Once this has been entered, the confirm button can be pressed and, if the facility name doesn\'t already exist for this venue, the updated facility should be stored. If the facility name already exists for this venue, the user will be alerted. If the user clicks cancel nothing will change. & 1. User clicks update facility. User changes name to name that already exists for venue. Click Confirm. User will be alerted (nothing will change). 2. User clicks update facility. User changes name. Click Cancel (nothing will change). 3. User clicks update facility. User changes name to that doesn\'t exist. Click Confirm. Facility name will be changed. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - add sport link & BS-AT-16 & As an admin - when viewing the list, an add sport link will be available. When this is pressed the admin will be redirected to the add sport webpage. & When viewing the list of sports, click the add button. This should redirect the admin to an add sport page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - add sport  & BS-AT-17 & As an admin - The add sport webpage will contain a form. This form will enable the user to add a sport name e.g. Squash. Once this has been entered, the confirm button can be pressed and, if the sport name doesn\'t already exist, the new sport should be added. If the sport name already exists, the user will be alerted. If the user clicks cancel nothing will change. & 1. User enters name that already exists. Click Confirm. User will be alerted (nothing will change). 2. User adds name. Click Cancel (nothing will change). 3. User enters name that doesn\'t exist. Click Confirm. Sport will be added. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - remove sport & BS-AT-18 & As an admin - when viewing the list of sports, a remove sport link will be available. Pressing this will alert the user that they are about to remove the sport and all facilities with only this sport assigned to them. If the user clicks confirm then the sport and all stipulated facilities will be removed. If the user clicks cancel, nothing will change. & 1. User clicks remove sport. Click Cancel (nothing will change). 2. User clicks remove sport. Click Confirm. Sport and linked facilities should be removed. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - update sport link & BS-AT-19 & As an admin - when viewing the list, an update sport link will be available for each sport. When this is pressed the admin will be redirected to the update sport webpage for that sport. & When viewing the list of sport, click the update button. This should redirect the admin to an update sport page. & Pass & \\
+\hline
+
+BS-FR1-1 & Facilities - update sport & BS-AT-20 & As an admin - The update sport webpage will contain a form. This form will enable the user to change the sport name e.g. Tennis. Once this has been entered, the confirm button can be pressed and, if the sport name doesn\'t already exist, the updated sport should be stored. If the sport name already exists, the user will be alerted. If the user clicks cancel nothing will change. & 1. User clicks update sport. User changes name to name that already exists. Click Confirm. User will be alerted (nothing will change). 2. User clicks update sport. User changes name. Click Cancel (nothing will change). 3. User clicks update sport. User changes name to that doesn\'t exist. Click Confirm. Sport name will be changed. & Pass & \\
+\hline
+
+BS-FR2-1 & Availability - link & BS-AT-21 & As an admin - on the home page there will be a link that says"Block facility" This will allow the admin to book a facility for a period of time. Clicking this link will redirect the admin to a period booking webpage. & When viewing the list of facilities, click the book period button. This should redirect the admin to a book period page. & Pass & \\
+\hline
+
+BS-FR2-1 & Availability - Book period & BS-AT-22 & As an admin - on the book period page for a facility, the admin has the ability to choose a start and end date as well as input a reason for the booking. The admin can confirm the booking, or cancel the action. Confirming will book the facility for that duration of time.  & 1. Click cancel, page will go back and nothing will change. 2. Input valid information into the form. The facility will no longer be available for that period. & Pass & \\
+\hline
+
+BS-FR3-1 & Booking - view bookings & BS-AT-23 & As a member - you can view your bookings. This will be displayed as a list. If no bookings have been made then only blocked facilities will be shown. & A list of member bookings should be present. This list can be empty if no booking\'s have been entered, this may be blank. & Pass & \\
+\hline
+
+DG-FR9-1 & Booking - view bookings (admin) & BS-AT-24 & As an admin - you can view all bookings made by members. This will be displayed as a list. If no bookings have been made then this will be empty. & A list of member bookings should be present. This list can be empty if no booking\'s have been entered, this may be blank. & Pass & \\
+\hline
+
+BS-FR3-1 & Booking - add booking link & BS-AT-25 & As a member - when viewing the list, an add booking link will be available. When this is pressed the member will be redirected to the add booking webpage. & When a member is viewing their bookings, click the add button. This should redirect the member to an add booking page. & Pass & \\
+\hline
+
+BS-FR3-1 & Booking - add booking (choose date, sport and venue) & BS-AT-26 & As a member - once being redirected to the add bookings page, member will be able to fill in the form by selecting venue, sport and date for the booking. Clicking cancel will redirect the member back to the previous page. Clicking confirm will redirect the member to the choose time page. If no times are available for the day the member will be alerted. & 1. User fills in form data. Click Cancel (nothing will change). 2. User fills in form data. Click confirm. User will be directed to choose a time. 3. If no times for the date are available the user should be alerted that no times are available. & Pass & \\
+\hline
+
+BS-FR3-1 & Booking - add booking (choose time) & BS-AT-27 & As a member - user will be presented with list of a times for the specified date. User can select one of these times. If user presses cancel, they will be redirected to the previous page (add bookings). If user presses confirm, they will receive a message confirming their booking and a court. & 1. User selects time. User presses cancel, redirected to add bookings page. 2. User selects time. User presses confirm, receive confirmation of time and an assigned court. & Pass & \\
+\hline
+
+BS-FR3-1 DG-FR9-1 & Booking - remove booking & BS-AT-28 & As an member and admin - when viewing the list of bookings, a remove booking link will be available. Pressing this will alert the user that they are about to remove the booking. If the user clicks confirm then the booking will be removed and the time will become available . If the user clicks cancel, nothing will change. & 1. User clicks remove booking. Click Cancel (nothing will change). 2. User clicks remove booking. Click Confirm. Booking should be removed and time should be freed. & Pass & \\
+\hline
+
+BS-FR3-1 DG-FR9-1 & Booking - update booking link & BS-AT-29 & As a member and admin - when viewing the list, an update booking link will be available. When this is pressed the user will be redirected to the update booking webpage. & When viewing the list of bookings, click the update button. This should redirect the user to an update sport page. & Pass & \\
+\hline
+
+BS-FR3-1 DG-FR9-1 & Booking - update booking (choose date, sport and venue) & BS-AT-30 & As a member and admin - once being redirected to the update bookings page, user will be able to update the form data by selecting a venue, sport and date for the booking. Clicking cancel will redirect the user back to the previous page. Clicking confirm will redirect the user to the choose time page. If no times are available for the day the user will be alerted.  & 1. User Clicks Cancel (nothing will change). 2. User updates form data. Click confirm. User will be directed to choose a time. 3. If no times for the date are available the user should be alerted that no times are available. & Pass & \\
+\hline
+
+BS-FR3-1 DG-FR9-1 & Booking - update booking (choose time) & BS-AT-31 & As a member and admin - user will be presented with a list of a times for the specified date. User can select one of these times. If user presses cancel, they will be redirected to the previous page (add bookings). If user presses confirm, they will receive a message confirming their booking has changed, and confirming a court. Booking\'s original time will then be freed up. & 1. User selects time. 2. User presses cancel, redirected to add bookings page. 3. User presses confirm, receives confirmation of time and an assigned court (booking in old timeslot is removed). & Pass & \\
+\hline
+
+BS-FR4-1 & Booking - 1 hour time slot & BS-AT-32 & As a member - When bookings are being made they should be in hour time slots. & Click add booking. Enter date, venue and sport. Click confirm. The dates returned should be 1 hour time slots.  & Pass & \\
+\hline
+\end{longtable}

@@ -1,0 +1,14 @@
+\begin{longtable}{ |l|p{3cm}|l|p{5cm}|p{5cm}|l|p{6.5cm}|}
+\hline
+\textbf{FR\#}	&	\textbf{Requirement} & \textbf{AT\#}	&	\textbf{Description} & \textbf{Test} & \textbf{Pass/Fail} &	\textbf{Comments} \\
+\hline
+\endhead
+
+DG-FR9-1 & Users should be able to access their own audit data & GL-AT-11 & When the user visits the Audit data page, they should be able to view their data associated with their account & Create a new account and perform an action which edits data. E.g. adding a manual entry. Go to the audit log pages and ensure it appears in a human readable form. & Pass & Data is present, but the format of the "content" provided by each service is inconsistent.  The page could automatically load data for the past X days rather than the default value of the 'From' input being the current time. \\ \hline
+DG-FR9-1 & Users should not be able to view other peoples' access data & GL-AT-12 & The user ID field should be greyed out and not editable. This should be server side validated & Ensure text in box cannot be modified. Edit the text using debugging console in browser, ensure the page returns with the original unmodified ID & Pass & The input for User ID could be hidden for users who aren't able to edit the value.  \\ \hline
+DG-FR9-2 & Administrators should be able to access audit data for any user in the system & GL-AT-21 & An administrator should be able to view their own Audit data. & Login as an administrator and perform and action which edits data, E.g. adding a manual entry. Go to the audit log pages and ensure it appears in a human readable form. & Pass & See comments for GL-AT-11  \\ \hline
+DG-FR9-2 & Administrators should be able to access audit data for any user in the system & GL-AT-22 & An administrator should be able to view other users Audit data. & Login to the user account and copy the unique user ID. Log back in as the administrator and change the ID in the text box to this. Ensure that the audit logs returned are for the queried user. & Pass & It would be better if a human-readable identifier such as an email address could be entered, rather an than a UUID.  There's no intuitive way for an administrator to get the UUID of a user other than going to the user management pages, and viewing the UUID for that user in the browser URL. \\ \hline
+N/A & N/A & GL-AT-31 & A user who is not logged in should be able to view the service status & Open the service status as both a logged in and logged out user. These should correctly reflect the microservices running. & Pass & Upon system start up, the page shows the GLaDOS service as being down, despite it clearly being up by virtue of being able to display the status page.  There is no way for users who aren't logged in to find the status page, unless they know the direct URL to the page. \\ \hline
+
+
+\end{longtable}

@@ -1,0 +1,13 @@
+\begin{longtable}{ |l|p{3cm}|l|p{5cm}|p{5cm}|l|p{6.5cm}|}
+\hline
+\textbf{FR\#}	&	\textbf{Requirement} & \textbf{AT\#}	&	\textbf{Description} & \textbf{Test} & \textbf{Pass/Fail} &	\textbf{Comments} \\
+\hline
+\endhead
+
+&  & S-AT-1 & The webpages should display who is currently logged in, & In the top corner of the webpages "Logged in as" should be displayed followed by the username/userid & Pass &  \\ \hline
+ &  & S-AT-2 & If a user is not logged in and try to access a page, they will be redirected to the login form. & No user logged in. Try to access booking facilities. Will be required to login. & Pass &  \\ \hline
+EIR-1 & The system should be a set of microservices and accessible from a web browser & S-AT-3 & Check the website is accessible from a browser & Navigate to the Aber Fitness website using a browser & Pass &  \\ \hline
+EIR-2 & The system should support localisation without having to provide translations & S-AT-4 & Check the website supports localisation & Switch the browser's preferred language to something else, e.g. Welsh. Check some sample translations are loaded & Fail & The system does not support localisation. \\ \hline
+ &  & S-AT-5 &  &  &  &  \\ \hline
+
+\end{longtable}
