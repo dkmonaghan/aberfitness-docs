@@ -11,8 +11,9 @@
         \centering
         \includegraphics[width=\textwidth]{Images/nginx_proxy_flow.png}
         \caption{Traffic flow diagram showing an end user's browser connecting to the internet facing \textit{nginx} server, which then proxies requests through to the backend microservice}
+        \label{fig:nginx_proxy_flow}
     \end{figure}
     
-    The Aber Fitness system architecture means that services are not exposed to the internet, but are instead available over an internal Docker network which allows containers to communicate with each other. In order to provide external access to the web servers of all of our microservices we have deployed nginx, an open-source and free web server which features highly customisable config files. Through the use of nginx's \lstinline{proxy\_pass} directive, we are able to take requests from end users and pass them through to the correct backend microservice based on the requested URI. \textbf{TODO: link figure above}
+    The Aber Fitness system architecture means that services are not exposed to the internet, but are instead available over an internal Docker network which allows containers to communicate with each other. In order to provide external access to the web servers of all of our microservices we have deployed nginx, an open-source and free web server which features highly customisable config files. Through the use of nginx's \lstinline{proxy\_pass} directive, we are able to take requests from end users and pass them through to the correct backend microservice based on the requested URI. (Fig. \ref{fig:nginx_proxy_flow})
     
 
