@@ -9,9 +9,8 @@ Initially the service was to only have one controller, \textit{DashboardControll
 \par
 As the User Interface is a prime concern for this microservice, implementation of an open-source and professional template was high-priority, once data processing spike-work was completed. A template was decided on with the aim to implement it into every microservice eventually. Unfortunately, some time after being implemented as part of the Health Dashboard, the template was later changed to integrate better with Bootstrap 4 and to be simpler in DOM terms. While certainly a major advantage for the other microservices, it resulted in some time being lost to re-implementing the existing view files.
 
-% TODO Find some more to say here, maybe?
 \par
-In order to keep the user experience fluid, goal and activity data deletion and the simple steps recorder use AJAX on the webpage instead of using a form submission. The state of the \textit{Activity Breakdown} graph was originally going to be refreshed using AJAX, however the library used to produce the graph allows data to be added dynamically, so that was not required.
+In order to keep the user experience fluid, goal and activity data deletion and the simple steps recorder use AJAX on the webpage instead of using a form submission. The state of the \textit{Steps Taken By Day} graph was originally going to be refreshed using AJAX, however it was determined that it would be simpler to simply refresh the page using JavaScript, as some of the goal completion data would also need to be updated.
 
 \subsubsection{Data Visualisation}
 \par
@@ -27,3 +26,7 @@ From our initial read of the functional requirements document, it was clear to u
 
 \par
 The functional requirements specified in \textit{E-FR1} that activity data rankings should be displayed based on users' activity data. It was not specified where this functionality should reside, but it seemed to make the most sense to make it a part of the Health Dashboard. This was also the case for \textit{E-FR2}.
+
+\subsubsection{Failing Gracefully}
+\par
+As Health Dashboard is tightly coupled to the Health Data Repository microservice, and loosely coupled to Challenges, FitBit Ingest and User Groups, it was felt that returning the default ASP.NET exception page would not be acceptable, especially when considering that portions of the application would still be partially usable without Challenges or User Groups. As a result, certain cards do not generate on the Index page when Challenges is down, and all of the views show a "Health Dashboard is currently unavailable" message when Health Data Repository is down.
