@@ -22,8 +22,9 @@ The full deployment of this Docker stack has only been verified as working on De
 1. Create the required certificates by following the instructions in the [Certificates](certificates.md) documentation.
 1. Pull the Docker images using `docker-compose pull`.
 1. Start the stack using `docker-compose up -d`.
-1. Run the provided `create_admin.sql` file to create an Administrator account with the username `admin@example.com` and password `Admin-999`.
-1. Log in and immediately change the administrator email address and password.
+1. Connect to the MariaDB server and run the provided `deployment.sql` file.
+1. Restart the stack using `docker-compose down && docker-compose up -d`
+1. Log in and immediately change the administrator email address and password, which by default is `admin@example.com` and password `Admin-999`.
 1. Create the API resources and Clients in accordance with the [OAuth Configuration](oauth_configuration.md) documentation.
 1. Re-visit the `[service_name].env` files you edited earlier to ensure that the Client ID and Client Secret values are consistent with the clients you just created in Gatekeeper.
 1. Restart the stack using `docker-compose down && docker-compose up -d`
