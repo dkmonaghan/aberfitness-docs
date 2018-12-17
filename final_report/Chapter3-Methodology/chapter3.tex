@@ -1,9 +1,9 @@
 \chapter{Development Methodology}
 
 \section{Initial Project Plan}
-As the project began, the group had a number of meetings in quick succession in order to come up with an initial plan. One major point on the agenda was the development methodology to use - many group members wanted to take an agile approach, but were unsure of which flavour of agile to adopt. After evaluating the most commonly used approaches, the \textit{Scrumban}\cite{scrumban} methodology was chosen. \textit{Scrumban} combines the benefits of the Scrum and Kanban methodologies, allowing the group to split into smaller sub-groups to tackle individual services, visualise the outstanding work, and respond quickly to requirements changes. Additionally, \textit{Scrumban} is tailored for the difficulties around estimating each sprint or the current velocity, which would be particularly useful as nobody within the group had any experience with the required application frameworks, Java EE and .NET Core. 
+As the project began, the group had a number of meetings in quick succession to come up with an initial plan. One major point on the agenda was which development methodology to use; many group members wanted to take an agile approach, but were unsure of which flavour of agile to adopt. After evaluating the most commonly used approaches, the \textit{Scrumban}\cite{scrumban} methodology was chosen. \textit{Scrumban} combines the benefits of the Scrum and Kanban methodologies, allowing the group to split into smaller sub-groups to tackle individual services, visualise the outstanding work, and respond quickly to requirements changes. Additionally, \textit{Scrumban} is tailored for the difficulties around estimating each sprint or the current velocity, which would be particularly useful as nobody within the group had any experience with the required application frameworks, Java EE and .NET Core. 
 
-There were initially nine distinct microservices identified which would be required in order to meet the functional requirements. Services were designated with a language in which they would be implemented. (Fig. \ref{fig:initial_spec_chart})
+Initially nine distinct microservices were identified which would be required in order to meet the functional requirements. Services were designated with a language in which they would be implemented. (Fig. \ref{fig:initial_spec_chart})
 
 \begin{figure}[H]
     \centering
@@ -12,7 +12,7 @@ There were initially nine distinct microservices identified which would be requi
     \label{fig:initial_spec_chart}
 \end{figure}
 
-Microservices were designated with a priority ranking between 1 and 3(Fig. \ref{fig:numbering_microservice_priority}). Services which were critical to the core functionality of the entire system were assigned a priority of 1, an example of which is \textit{Health Data Repository} which is responsible for the central storage of all activity data within the system. Services with less crucial functionality were assigned priority 2 or 3 as appropriate.
+Microservices were assigned a priority ranking between 1 and 3 (Fig. \ref{fig:numbering_microservice_priority}). Services which were critical to the core functionality of the entire system were assigned a priority of 1, for example \textit{Health Data Repository} which is responsible for the central storage of all activity data within the system. Services with less crucial functionality were assigned priority 2 or 3 as appropriate.
 
 \begin{figure}[H]
     \centering
@@ -24,12 +24,12 @@ Microservices were designated with a priority ranking between 1 and 3(Fig. \ref{
 
 \section{Supporting Tools}
 \subsection{GitHub \& TravisCI}
-\textit{GitHub}\footnote{https://github.com/sem5640-2018} was chosen as the version control host for all repositories, due to the vast array of features and tooling supported by the platform. The use of \textit{GitHub} allowed easy integration with \textit{Travis CI} to automatically trigger the running of unit tests and the building of \textit{Docker} images, and additionally allowed the enforcement of code quality procedures such as requiring peer review of code before merging, and preventing merges of code with failing tests. Integration with \textit{Slack} provided the group with instant notifications of events such as new pull requests and the status of \textit{Travis CI} builds.
+\textit{GitHub}\footnote{https://github.com/sem5640-2018} was chosen as the version control host for all repositories, due to the vast array of features and tooling supported by the platform. The use of \textit{GitHub} allowed easy integration with \textit{Travis CI} to automatically trigger the running of unit tests and the building of \textit{Docker} images. It also allowed enforcement of code quality procedures, such as requiring peer review of code before merging, and preventing merges of code with failing tests, to be completed. Integration with \textit{Slack} provided the group with instant notifications of events such as new pull requests and the status of \textit{Travis CI} builds.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/approve_pr.png}
-    \caption{Example of a pull request being peer reviewed. The \textit{TravisCI} builds were successful,allowing the branch to be merged into an upstream branch.}
+    \caption{Example of a pull request being peer reviewed. The \textit{TravisCI} builds were successful, allowing the branch to be merged into an upstream branch.}
     \label{fig:approve_pull_request}
 \end{figure}
 
@@ -50,7 +50,7 @@ Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_req
     \label{fig:swagger_ui}
 \end{figure}
 
-\textit{Swagger} is a web based application for documenting API specifications. Each microservice within \textit{Aber Fitness} has a file located in \lstinline{docs/swagger.json} which defines its API endpoints and any associated data models. \textit{Swagger} was a crucial part of the development process as it not only allowed us to draft API specifications, but allowed development of consuming services to happen in parallel, and promote fast feedback should missing functionality be identified.
+\textit{Swagger} is a web based application for documenting API specifications. Each microservice within \textit{Aber Fitness} has a file located in \lstinline{docs/swagger.json} that defines its API endpoints and any associated data models. \textit{Swagger} was a crucial part of the development process, as it not only allowed us to draft API specifications, but also allowed us to start development of API consuming services to happen in parallel, and promoted fast feedback if any missing functionality was identified.
 
 \subsection{Portainer}
 \begin{figure}[H]
@@ -60,13 +60,13 @@ Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_req
     \label{fig:portainer_ui}
 \end{figure}
 
-\textit{Portainer} provides a dashboard for managing \textit{Docker} volumes, networks, images and containers. Whilst completing the initial configuration of the \textit{Docker} images, \textit{Portainer} proved invaluable, as it provided rapid visual feedback allowing developers to quickly and easily debug problems by identifying which services were running, which were not, and allowing easy access to the application console output.
+\textit{Portainer} provides a dashboard for managing \textit{Docker} volumes, networks, images and containers. During the initial configuration of the \textit{Docker} images, \textit{Portainer} proved invaluable, as it provided rapid visual feedback allowing developers to quickly and easily debug problems by identifying which services were running, which were not, and provided easy access to the application console output.
 
 \subsection{Docker Hub}
-\textit{Docker Hub} is an online platform provided by \textit{Docker} which allows \textit{Docker} container images to be uploaded and hosted. The image full system stack is defined in the \lstinline{docker-compose} file, which can be updated and re-deployed. As part of our build process (Fig. \ref{fig:development_flow_diagram}), images are built by \textit{TravisCI} and then pushed to \textit{Docker Hub} before being pulled down onto the \textit{Docker} hosts.
+\textit{Docker Hub} is an online platform provided by \textit{Docker} which allows \textit{Docker} container images to be uploaded and hosted. The full system stack is defined in the \lstinline{docker-compose} file, which can be updated and re-deployed. As part of our build process (Fig. \ref{fig:development_flow_diagram}), images are built by \textit{TravisCI} and then pushed to \textit{Docker Hub} before being pulled down onto the \textit{Docker} hosts.
 
 \subsection{Slack \& Deployment}
-\textit{Slack} is a hosted chat service designed for offices and teams, and particularly suits itself to the development of software. The group used \textit{Slack} extensively throughout the development of \textit{Aber Fitness} not only to communicate and discuss progress, ideas and troubleshoot problems, but also made extensive use of \textit{Slack}'s integrations with services such as \textit{TravisCI} and \textit{GitHub} (Fig. \ref{fig:slack_travis_github})
+\textit{Slack} is a hosted chat service designed for offices and teams, and particularly suits itself to the development of software. The group used \textit{Slack} extensively throughout the development of \textit{Aber Fitness} not only to communicate and discuss progress, ideas and troubleshoot problems, but also made extensive use of \textit{Slack}'s integrations with services such as \textit{TravisCI} and \textit{GitHub} (Fig. \ref{fig:slack_travis_github}).
 
 \begin{figure}[H]
     \centering
@@ -75,7 +75,7 @@ Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_req
     \label{fig:slack_travis_github}
 \end{figure}
 
-\textit{Slack} also played a major role in our deployment strategy when rolling out updated \textit{Docker} images to our staging host. On multiple occasions we ran into permission issues whilst trying to deploy on the two \textit{Docker} hosts we had been provided by the Computer Science department. Each member of the team had their own individual login to the hosts, so permissions errors would occur after performing commands like \lstinline{git pull}. 
+\textit{Slack} also played a major role in our deployment strategy to deploy updated \textit{Docker} images to our staging host. On multiple occasions we ran into permission issues whilst trying to deploy on the two \textit{Docker} hosts we had been provided by the Computer Science department. Each member of the team had their own individual login to the hosts, so permissions errors would occur after performing commands like \lstinline{git pull}. 
 
 Another issue we ran into was developers forgetting the specific command sequence to update the application images. This would lead to confusion when the upstream changes were not deployed, wasting valuable development time resolving bugs. (Fig. \ref{fig:david_being_a_dumbass})
 
@@ -86,7 +86,7 @@ Another issue we ran into was developers forgetting the specific command sequenc
     \label{fig:david_being_a_dumbass}
 \end{figure}
 
-\textit{Slack} ended up providing us with an elegant solution to this, users could call a custom webhook by entering a specific command in a chat channel. A \textit{Slack} application was put together to automatically pull the latest \lstinline{docker-compose.yml} file from GitHub, as well as updating all the \textit{Docker Hub} images, then re-deploy the stack. This could all be done from within \textit{Slack} itself through the \lstinline{/deploy} command. (Fig. \ref{fig:slack_bot})
+\textit{Slack} ended up providing us with an elegant solution to this, users could call a custom webhook by entering a specific command in a chat channel. A \textit{Slack} application was put together that automatically pulled the latest \lstinline{docker-compose.yml} file from GitHub, updated all the \textit{Docker Hub} images, then re-deployed the stack. This could all be done from within \textit{Slack} itself through the \lstinline{/deploy} command. (Fig. \ref{fig:slack_bot})
 
 \begin{figure}[H]
     \centering
