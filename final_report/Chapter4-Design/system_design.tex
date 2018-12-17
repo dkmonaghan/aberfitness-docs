@@ -1,24 +1,24 @@
 \subsection{Persistence}
     \par
-    The system also required persistent database storage for all the backend microservices to store activity data, user accounts, logs, and more. Every microservice would need to connect to a database instance.
+    The system also required persistent database storage for all of the backend microservices to store activity data, user accounts, logs, and more. Every microservice would need to connect to a database instance.
 
     \par
-    Object relational mapping \textit{(ORM)} is a technique for writing database agnostic models and queries for persisting data. To keep code both testable and maintainable, both .NET Core and Java services use an ORM layer. Scaffolding subsequently generates database schemas based on the application's model classes
+    Object relational mapping \textit{(ORM)} is a technique for writing database-agnostic models and queries for persisting data. To keep code both testable and maintainable, both .NET Core and Java services use an ORM layer. Scaffolding subsequently generates database schemas based on the application's model classes
 
     \par
-    \textit{MariaDB}\cite{MariaDB} in a Docker container was selected for several reasons: Firstly, the database provides data consistency guarantees when a record it persisted from the ORM layer. Secondly, native .NET core and Java connectors exist as public framework packages. Finally, the software is GPL licensed avoiding future issues with proprietary software such as alternatives such as Microsoft SQL.
+    \textit{MariaDB}\cite{MariaDB} in a Docker container was selected for several reasons. Firstly, the database provides data consistency guarantees when a record it persisted from the ORM layer. Secondly, native .NET core and Java connectors exist as public framework packages. Finally, the software is GPL licensed to avoid future issues with proprietary software, including alternatives such as Microsoft SQL.
 
 \subsection{Model View Controller Pattern}
     \par
-    All implementations use the Model View Controller \textit{(MVC)}
+    All implementations use the Model-View-Controller \textit{(MVC)}
     pattern. This enhances testability by keeping constraints and functional logic within a model class. Controllers use an instance of the model and prepare data for return in a view. Dependency injection and reflection were used to test .NET core and Java components. These design patterns allow developers to replace concrete types with mocks at runtime based on the class interface.
 
     \par
-    In addition using the MVC pattern with dependency injection and reflection use emergent design. Automated unit testing allows developers to refactor and re-organise their classes as more features were implemented.
+    Additionally, the system was built with emergent design: using the MVC pattern with either dependency injection or reflection, depending on the langauge. Automated unit testing allows developers to refactor and re-organise their classes as more features were implemented.	
 
 \subsection{Packaging}
     \par
-    We choose to use docker images to deploy our images, these can be combined into an application stack defined in a \textit{docker compose} file. This also allows us to define internal networks, start-up order and filesystem volumes for each image.
+    It was decided to use docker hub to deploy the images, these can be combined into an application stack defined in a \textit{docker compose} file. This also allows manual definition of internal networks, start-up order and filesystem volumes for each image.
 
     \par
-    The deployed stack can be restarted or updated with the `\textit{docker-compose}' command, whilst individual containers can be managed using the docker commands directly. As part of the start-up process volumes are mounted and environment variables are injected into the image.
+    The deployed stack can be restarted or updated with the `\textit{docker-compose}' command, whilst individual containers can be managed using the docker commands directly. As part of the start-up process, volumes are mounted and environment variables are injected into the image.
