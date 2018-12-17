@@ -13,6 +13,9 @@
     All implementations use the Model View Controller \textit{(MVC)}
     pattern. This enhances testability by keeping constraints and functional logic within a model class. Controllers use an instance of the model and prepare data for return in a view. Dependency injection and reflection were used to test .NET core and Java components. These design patterns allow developers to replace concrete types with mocks at runtime based on the class interface.
 
+    \par
+    In addition using the MVC pattern with dependency injection and reflection use emergent design. Automated unit testing allows developers to refactor and re-organise their classes as more features were implemented.
+
 \subsection{Packaging}
     \par
     We choose to use docker images to deploy our images, these can be combined into an application stack defined in a \textit{docker compose} file. This also allows us to define internal networks, start-up order and filesystem volumes for each image.

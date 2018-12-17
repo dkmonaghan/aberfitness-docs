@@ -5,27 +5,27 @@
 \end{center}
 
 \par
-\textit{Aber Fitness} is a web application developed using Microsoft's \textit{.NET Core} and Oracle's \textit{Java Enterprise Edition} (henceforth referred to as Java EE). The project aims to provide a service to encourage fitness and promote engagement with sporting activities amongst the users of the application, offering functionality such as:
+\textit{Aber Fitness} is a web application developed using Microsoft's \textit{.NET Core} and Oracle's \textit{Java Enterprise Edition} (henceforth referred to as Java EE). The project aims to provide a service which encourages fitness and promotes engagement with sporting activities amongst the users of the application, by offering functionality such as:
 
 \begin{itemize}
-\item Graphing fitness data gathered by owners of \textit{Fitbit} devices, or through manual input.
-\item The ability to take part in challenges based on that fitness data.
-\item Providing a Sport ladder system, which has tight integration with a bespoke facility booking system.
+	\item Graphing fitness data gathered by owners of \textit{Fitbit} devices, or through manual input.
+	\item The ability to take part in challenges based on that fitness data.
+	\item Providing a Sport ladder system, which has tight integration with a bespoke facility booking system.
 \end{itemize}
 
-\textit{Aber Fitness} aims to offer everything that would be needed by a sporty and active person in order to bring their sporting activities into a digital platform and also to enhance their use of devices they already own, such as \textit{Fitbit} devices or smart watches such as the \textit{Apple Watch}.
+\textit{Aber Fitness} aims to offer everything required by a sporty and active person in order to bring their sporting activities onto a digital platform and also to enhance their use of devices they already own, such as fitness tracking devices or smart watches such as the \textit{Apple Watch}.
 
 \par
-At launch, the system will ingest activity data automatically from \textit{Fitbit}, and be open to the addition of other health data provider services at a later date due to the modular nature of the data ingest system. Once normalised, this activity data will be used throughout the various subsystems of \textit{Aber Fitness}, providing users with functionality such as a dashboard overview of their activity over approximately a month, as well as integrating tightly with the challenges system to add a competitive aspect to the system, with the aim to keep users engaged with both the platform itself and keeping fit in general. 
+At launch, the system will automatically ingest activity data from \textit{Fitbit}, and be open to the addition of other health data provider services at a later date due to the modular nature of the data ingest system. Once normalised, this activity data will be used throughout the various microservices within \textit{Aber Fitness}, providing users with functionality such as a dashboard overview of their activity over the past month, as well as integrating tightly with the challenges microservice to add a competitive aspect to the system, with the aim of keeping users engaged with both the platform itself and keeping fit in general.
 
 \par
-Aber Fitness will also feature a number of supporting tools, such as:
+\textit{Aber Fitness} will also feature a number of supporting tools, such as:
 
 \begin{itemize}
-\item A user management system with two-factor authentication.
-\item The ability for users to view a comprehensive audit trail of when and how their data was used and accessed.
-\item A global layout template with a dynamic sidebar, which can be adjusted by administrators and those changes are instantly propagated to other microservices.
+	\item A user management system with two-factor authentication.
+	\item A comprehensive audit trail of when and how their data was used and accessed, which is filterable by date.
+	\item A global layout template with a dynamic sidebar, which can be adjusted by administrators. Those changes will be instantly propagated to the other microservices.
 \end{itemize}
 
 \par
-The platform is also designed to be scalable and easily deployed through the use of \textit{Docker}, as each aspect of the system has been segregated into individual microservices. 
+\textit{Aber Fitness} will also be designed to be scalable and easily deployed through the use of \textit{Docker}, by segregating related functionality into individual microservices.
