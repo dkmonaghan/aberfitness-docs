@@ -5,11 +5,11 @@
   Localisation was a system level requirement which was not completed. It was kept in mind during the start of the project, but no work was done in preparing the views for its introduction. In future projects, code reviews would be used to make sure that views are prepared for localisation before the barrier-to-entry becomes too high.
 
   \subsection{Access Tokens}
-  There is currently no way to revoke a token using the authorization server. If a client token were leaked, a malicious party would be able use that token until expiration. Additionally, in \textit{Fitbit Ingest}, we currently cannot revoke a token on the user's behalf. Both of these limitations were noticed after a code freeze. Additional discussion of various use-cases would have highlighted this issue earlier in development, allowing them to be rectified.
+  There is currently no way to revoke a token using the authorization server. If a client token were leaked, a malicious party would be able use that token until expiration. Additionally, in \textit{Fitbit Ingest}, there currently is no way to revoke a token on the user's behalf. Both of these limitations were noticed after a code freeze. Additional discussion of various use-cases would have highlighted this issue earlier in development, allowing them to be rectified.
 
   \subsection{Automated Testing}
   \par
-  Additional development time writing automated integration tests would have reduced the ongoing maintenance costs associated with the system. All endpoints are currently tested manually; the time spent testing did not outweigh the time writing tests in this instance, however the cost-benefit would certainly pay off in the long term.
+  Additional development time writing automated integration tests would have reduced the ongoing maintenance overhead associated with the system. All endpoints are currently tested manually as it was decided that the time spent testing did not outweigh the time writing tests in this instance. However, in the long term, the ongoing use of developer time required for manual testing would have made it beneficial to write automated test suites.
 
 \section{Fitness for Purpose}
   \subsection{Design Constraints}
@@ -24,4 +24,4 @@
 
   \subsection{Functional Requirements}
   \par
-  Based on the client's criteria, we have fulfilled the majority of the functional requirements, as seen in \ref{Requirements_chpt}. This was measured using acceptance tests, which give a rough indication of conformity to the requirements. 129 tests were performed with 12 failing, meeting 90.7\% of the requirements.
+  Based on the client's criteria, the majority of the functional requirements were fulfilled, as seen in chapter 2. This was measured using acceptance tests, which give a rough indication of conformity to the requirements. 129 tests were performed with 12 failing, meeting 90.7\% of the requirements.
