@@ -1,7 +1,7 @@
 \chapter{Development Methodology}
 
 \section{Initial Project Plan}
-As the project began, the group had a number of meetings in quick succession to come up with an initial plan. One major point on the agenda was which development methodology to use; many group members wanted to take an agile approach, but were unsure of which flavour of agile to adopt. After evaluating the most commonly used approaches, the \textit{Scrumban}\cite{scrumban} methodology was chosen. \textit{Scrumban} combines the benefits of the Scrum and Kanban methodologies, allowing the group to split into smaller sub-groups to tackle individual services, visualise the outstanding work, and respond quickly to requirements changes. Additionally, \textit{Scrumban} is tailored for the difficulties around estimating each sprint or the current velocity, which would be particularly useful as nobody within the group had any experience with the required application frameworks, Java EE and .NET Core. 
+As the project began, the group had a number of meetings in quick succession to come up with an initial plan. One major point on the agenda was which development methodology to use; many group members wanted to take an agile approach, but were unsure of which flavour of agile to adopt. After evaluating the most commonly used approaches, the \textit{Scrumban}\cite{scrumban} methodology was chosen. Scrumban combines the benefits of the Scrum and Kanban methodologies, allowing the group to split into smaller sub-groups to tackle individual services, visualise the outstanding work, and respond quickly to requirements changes. Additionally, Scrumban is tailored for the difficulties around estimating each sprint or the current velocity, which would be particularly useful as nobody within the group had any experience with the required application frameworks, \textit{Java EE} and \textit{.NET Core}.
 
 Initially nine distinct microservices were identified which would be required in order to meet the functional requirements. Services were designated with a language in which they would be implemented. (Fig. \ref{fig:initial_spec_chart})
 
@@ -75,7 +75,7 @@ Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_req
     \label{fig:slack_travis_github}
 \end{figure}
 
-\textit{Slack} also played a major role in our deployment strategy to deploy updated \textit{Docker} images to our staging host. On multiple occasions we ran into permission issues whilst trying to deploy on the two \textit{Docker} hosts we had been provided by the Computer Science department. Each member of the team had their own individual login to the hosts, so permissions errors would occur after performing commands like \lstinline{git pull}. 
+\textit{Slack} also played a major role in our deployment strategy to deploy updated \textit{Docker} images to our staging host. On multiple occasions we ran into permission issues whilst trying to deploy on the two \textit{Docker} hosts we had been provided by the Computer Science department. Each member of the team had their own individual login to the hosts, so permissions errors would occur after performing commands like \lstinline{git pull}.
 
 Another issue we ran into was developers forgetting the specific command sequence to update the application images. This would lead to confusion when the upstream changes were not deployed, wasting valuable development time resolving bugs. (Fig. \ref{fig:david_being_a_dumbass})
 
@@ -94,4 +94,3 @@ Another issue we ran into was developers forgetting the specific command sequenc
     \caption{A demonstration of the \lstinline{/deploy} command being used to re-deploy \textit{Aber Fitness} onto the staging host}
     \label{fig:slack_bot}
 \end{figure}
-
