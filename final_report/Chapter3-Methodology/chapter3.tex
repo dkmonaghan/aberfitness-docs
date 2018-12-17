@@ -23,17 +23,17 @@ Microservices were assigned a priority ranking between 1 and 3 (Fig. \ref{fig:nu
 
 
 \section{Supporting Tools}
-\subsection{GitHub \& TravisCI}
+\subsection{GitHub \& Travis CI}
 \textit{GitHub}\footnote{https://github.com/sem5640-2018} was chosen as the version control host for all repositories, due to the vast array of features and tooling supported by the platform. The use of \textit{GitHub} allowed easy integration with \textit{Travis CI} this automatically triggered running unit tests and building \textit{Docker} images: it also allowed enforcement of code quality procedures, such as requiring peer review of code before merging, and preventing merges of code with failing tests. Integration with \textit{Slack} provided the group with instant notifications of events such as new pull requests and the status of \textit{Travis CI} builds.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/approve_pr.png}
-    \caption{Example of a pull request being peer reviewed. The \textit{TravisCI} builds were successful, allowing the branch to be merged into an upstream branch.}
+    \caption{Example of a pull request being peer reviewed. The \textit{Travis CI} builds were successful, allowing the branch to be merged into an upstream branch.}
     \label{fig:approve_pull_request}
 \end{figure}
 
-Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_request}), \textit{TravisCI} would build and push the \textit{Docker} image to \textit{Docker Hub}.
+Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_request}), \textit{Travis CI} would build and push the \textit{Docker} image to \textit{Docker Hub}.
 
 \begin{figure}[H]
     \centering
@@ -63,15 +63,15 @@ Once a pull request had been approved and merged (Fig. \ref{fig:approve_pull_req
 \textit{Portainer} provides a dashboard for managing \textit{Docker} volumes, networks, images and containers. During the initial configuration of the \textit{Docker} images, \textit{Portainer} proved invaluable, as it provided rapid visual feedback allowing developers to quickly and easily debug problems by identifying which services were running, which were not, and provided easy access to the application console output.
 
 \subsection{Docker Hub}
-\textit{Docker Hub} is an online platform provided by \textit{Docker} which allows \textit{Docker} container images to be uploaded and hosted. The full system stack is defined in the \lstinline{docker-compose} file, which can be updated and re-deployed. As part of our build process (Fig. \ref{fig:development_flow_diagram}), images are built by \textit{TravisCI} and then pushed to \textit{Docker Hub} before being pulled down onto the \textit{Docker} hosts.
+\textit{Docker Hub} is an online platform provided by \textit{Docker} which allows \textit{Docker} container images to be uploaded and hosted. The full system stack is defined in the \lstinline{docker-compose} file, which can be updated and re-deployed. As part of our build process (Fig. \ref{fig:development_flow_diagram}), images are built by \textit{Travis CI} and then pushed to \textit{Docker Hub} before being pulled down onto the \textit{Docker} hosts.
 
 \subsection{Slack \& Deployment}
-\textit{Slack} is a hosted chat service designed for offices and teams, and particularly suits itself to the development of software. The group used \textit{Slack} extensively throughout the development of \textit{Aber Fitness} not only to communicate and discuss progress, ideas and troubleshoot problems, but also made extensive use of \textit{Slack}'s integrations with services such as \textit{TravisCI} and \textit{GitHub} (Fig. \ref{fig:slack_travis_github}).
+\textit{Slack} is a hosted chat service designed for offices and teams, and particularly suits itself to the development of software. The group used \textit{Slack} extensively throughout the development of \textit{Aber Fitness} not only to communicate and discuss progress, ideas and troubleshoot problems, but also made extensive use of \textit{Slack}'s integrations with services such as \textit{Travis CI} and \textit{GitHub} (Fig. \ref{fig:slack_travis_github}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/Slack_Travis_GitHub.png}
-    \caption{A screenshot of the \textit{Slack} channel \lstinline{\#dev-booking-facilities} demonstrating the integrations between \textit{Slack}, \textit{GitHub} and \textit{TravisCI}}
+    \caption{A screenshot of the \textit{Slack} channel \lstinline{\#dev-booking-facilities} demonstrating the integrations between \textit{Slack}, \textit{GitHub} and \textit{Travis CI}}
     \label{fig:slack_travis_github}
 \end{figure}
 
