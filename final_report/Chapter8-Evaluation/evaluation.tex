@@ -1,10 +1,11 @@
 \section{Future Improvements}
 
-- \\TODO Blocked on status
-
     \subsection{Localisation}
     \par
     Localisation was a system level requirement which was not completed. It was kept in mind during the start of the project, but no work preparing the view was in place. In future projects, we would use code reviews to make sure views are prepared for localisation before the barrier to entry becomes too high.
+
+    \subsection{Access Tokens}
+    There is currently no way to revoke a token using the authorization server. If a client token were leaked a malicious party would be able use that token until expiration. Additionally in \textit{Fitbit Ingest} we currently cannot revoke a token on the user's behalf. Both of these limitations were noticed after a code freeze. Additional discussion of various use cases would have highlighted this issue earlier in development, allowing them to be rectified.
 
     \subsection{Automated Testing}
     \par
