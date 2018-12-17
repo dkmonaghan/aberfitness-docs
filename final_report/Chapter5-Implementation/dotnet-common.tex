@@ -7,3 +7,5 @@ Development work was accelerated through the use of the .NET Core scaffolding, a
 Creating configuration files for Travis, our Continuous Integration provider, was extremely simple; once the C\# environment had been chosen, only two commands were required to install all dependencies and run the test suites.
 
 Building Docker images was also a simple process using the example files provided by Microsoft\cite{dotnet_docker}, requiring only minor modification to expose additional ports to allow HTTPS traffic.
+
+In order to run scheduled tasks, such as sending email updates to users, the \textit{Hangfire}\cite{hangfire} package is employed. This package allows the application to run functions on a repeated schedule, similar to cron jobs. \textit{Health Data Repository} and \textit{Challenges} employ this package.
