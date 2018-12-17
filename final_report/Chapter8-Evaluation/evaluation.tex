@@ -1,25 +1,27 @@
 \section{Future Improvements}
 
-- \\TODO Blocked on status
+  \subsection{Localisation}
+  \par
+  Localisation was a system level requirement which was not completed. It was kept in mind during the start of the project, but no work was done in preparing the views for its introduction. In future projects, code reviews would be used to make sure that views are prepared for localisation before the barrier-to-entry becomes too high.
 
-    \subsection{Localisation}
-    \par
-    Localisation was a system level requirement which was not completed. It was kept in mind during the start of the project, but no work preparing the view was in place. In future projects, we would use code reviews to make sure views are prepared for localisation before the barrier to entry becomes too high.
+  \subsection{Access Tokens}
+  There is currently no way to revoke a token using the authorization server. If a client token were leaked, a malicious party would be able use that token until expiration. Additionally, in \textit{Fitbit Ingest}, we currently cannot revoke a token on the user's behalf. Both of these limitations were noticed after a code freeze. Additional discussion of various use-cases would have highlighted this issue earlier in development, allowing them to be rectified.
 
-    \subsection{Automated Testing}
-    \par
-    Additional development time writing automated integration tests would have reduced the ongoing maintenance costs associated with the system. Currently all endpoints are tested manually; whilst the time spent testing did not outweigh the time writing tests in this instance, in the long term the cost-benefit would pay off.
+  \subsection{Automated Testing}
+  \par
+  Additional development time writing automated integration tests would have reduced the ongoing maintenance costs associated with the system. All endpoints are currently tested manually; the time spent testing did not outweigh the time writing tests in this instance, however the cost-benefit would certainly pay off in the long term.
 
-\section{Fitness for purpose}
-    \subsection{Design Constraints}
-    \par
-    Our application stack makes use of both Java EE and .NET Core, as per the design constraints. These languages also provide access to many frameworks and third party libraries and packages through Nuget and Maven. 
-    
-    \par
-    By carefully checking the license of all external code and finding alternatives where required, the system is completely free of proprietary software and licensing limitations. Additionally, the use of on external packages for core components, such as \textit{Identity Server} for authorization, reduces the sites future maintenance overhead.
+\section{Fitness for Purpose}
+  \subsection{Design Constraints}
+  \par
+  Our application stack makes use of both \textit{Java EE} and \textit{.NET Core}, as per the design constraints. These languages also provide access to many frameworks and third party libraries and packages through Nuget and Maven.
 
-    Finally, deployable Docker images were created for each microservice which ran on the destination server. This would also allow the system to scale the number of instances based on an individual service's load in the future.
+  \par
+  By carefully checking the licenses of all external code and finding alternatives where required, the system is completely free of proprietary software and licensing limitations. Additionally, the use of external packages for core components, such as \textit{Identity Server} for authorization, reduces the sites future maintenance overhead.
 
-\subsection{Functional Requirements}
-    \par
-    Based on the client's criteria we have fulfilled the majority of functional requirements, as seen in \ref{Requirements_chpt}. This was measured using acceptance tests, which give a rough indication of conformity to the requirements. 129 tests were performed with 12 failing, meeting 90.7\% of the requirements.
+  \par
+  Finally, deployable Docker images are created for each microservice to run on the destination server. This allows the system to scale the number of instances based on an individual service's load.
+
+  \subsection{Functional Requirements}
+  \par
+  Based on the client's criteria, we have fulfilled the majority of the functional requirements, as seen in \ref{Requirements_chpt}. This was measured using acceptance tests, which give a rough indication of conformity to the requirements. 129 tests were performed with 12 failing, meeting 90.7\% of the requirements.

@@ -1,28 +1,28 @@
-The \textit{Aber Fitness} system is broken down into a number of microservices in order to aid portability, scalability and promotes a more maintainable codebase. After reviewing the initial project specification, the following microservices were created:
+The \textit{Aber Fitness} system is broken down into a number of microservices in order to aid portability, scalability and promote a more maintainable codebase. After reviewing the initial project specification, the following microservices were created:
 
 \begin{itemize}
 
-	\item \textbf{Booking \& Facilities} - The \textit{Aber Fitness} offers functionality for users to be able to schedule bookings at sports venues, such as swimming pools and squash courts. This microservice is called used by the \textit{Ladders} service to create bookings for competitions.
+	\item \textbf{Booking \& Facilities} - The \textit{Aber Fitness} platform offers functionality for users to be able to schedule bookings at sports venues, such as swimming pools and squash courts. This microservice is used by the \textit{Ladders} service to create bookings for competitions.
 
-	\item \textbf{Challenges} - The system offers the ability to give users activity challenges, for example completing a number of steps in a specific timeframe. These challenges can also be 'group' challenges, where a number of users can compete against each another to achieve goals such as furthest distance walked in a week, etc.
+	\item \textbf{Challenges} - The system offers the ability to give users activity challenges, for example completing a number of steps in a specific timeframe. These challenges can also be 'group' challenges, where a number of users can compete against each other to achieve goals such as furthest distance walked in a week, etc.
 
 	\item \textbf{Communications} - This microservice provides an API for other services to send email notifications to users. It does not present any form of web UI, and users do not directly interact with it. This system could also be easily expanded to send out text messages, push alerts, etc. depending on future requirements.
 
-	\item \textbf{Fitbit Ingest Service} - At launch, the \textit{Aber Fitness} platform allows a user to link their \textit{Fitbit} accounts to the system in order to import their activity data. The service periodically polls the Fitbit API for new data on the users' behalf, then stores this into the \textit{Health Data Repository}.
+	\item \textbf{Fitbit Ingest Service} - At launch, the \textit{Aber Fitness} platform allows a user to link their \textit{Fitbit} account to the system in order to import their activity data. The service periodically polls the Fitbit API for new data on the users' behalf, then stores it in the \textit{Health Data Repository}.
 	
-	\par With the possibility of adding future platform support the "ingest service" concept was created. This would allow us to support services such as Apple's \textit{HealthKit} and other fitness tech providers. 
+	\par To enable adding future platform support the "ingest service" concept was created. This would allow for support of services such as Apple's \textit{HealthKit} and other fitness tech providers. 
 	This architectural design means that activity data can be normalised by a number of "ingest services" before being passed through to the \textit{Health Data Repository} service for storage. 
 
-	\item \textbf{Gatekeeper} - \textit{Gatekeeper} is \textit{Aber Fitness}'s OpenID Provider, and handles all authentication within the system. User credentials and account metadata is stored within \textit{Gatekeeper}\textit{Gatekeeper} uses the OAuth 2.0 flow and is responsible for providing a single sign-on service for all of the various microservices. Microservices also contact \textit{Gatekeeper} to obtain and verify tokens when calling internal APIs.
+	\item \textbf{Gatekeeper} - \textit{Gatekeeper} is \textit{Aber Fitness}'s OpenID Provider, and handles all authentication within the system. User credentials and account metadata are stored within \textit{Gatekeeper}. \textit{Gatekeeper} uses the OAuth 2.0 flow and is responsible for providing a single sign-on service for the various microservices. Microservices also contact \textit{Gatekeeper} to obtain and verify tokens when calling internal APIs.
 
-	\item \textbf{GLaDOS} - \textit{GLaDOS} is the centralised auditing mechanism for \textit{Aber Fitness}. It presents a REST API which is used to store audit data; such as when a user's data was accessed, modified, or deleted. \textit{GLaDOS} also provides a Status page which displays the availability of all the other microservices.
+	\item \textbf{GLaDOS} - \textit{GLaDOS} is the centralised auditing mechanism for \textit{Aber Fitness}. It presents a REST API which is used to store audit data, such as when a user's data was accessed, modified, or deleted. \textit{GLaDOS} also provides a Status page which displays the availability of all the other microservices.
 
-	\item \textbf{Health Dashboard} - \textit{Health Dashboard} is the first interface users will encounter after logging in, or navigating to \textit{Aber Fitness}.  It provides the user with an overview of their recent activity as well as providing updates on any challenges or ladder competitions the user may be involved in.
+	\item \textbf{Health Dashboard} - \textit{Health Dashboard} is the first interface users will encounter after logging in or navigating to \textit{Aber Fitness}. It provides the user with an overview of their recent activity as well as providing updates on any challenges or ladder competitions the user may be involved in.
 
 	\item \textbf{Health Data Repository} - The \textit{Health Data Repository} service is responsible for providing an API for accessing and storing activity data. It receives normalised activity data from the Ingest Services, and provides multiple API endpoints for other microservices to access user activity data. 
 
-	\item \textbf{Ladders} - \textit{Ladders} is responsible for organising and managing ladder style competitions among users of the system. Users can compete in sporting championships for a variety of competitive sports such as tennis, running or cycling etc. The \textit{Ladders} service also automatically books venues for upcoming competitive events, which is managed by the \textit{Booking Facilities} microservice.
+	\item \textbf{Ladders} - \textit{Ladders} is responsible for organising and managing ladder-style competitions among users of the system. Users can compete in sporting championships for a variety of competitive sports such as tennis, running or cycling etc. The \textit{Ladders} service also automatically books venues for upcoming competitive events. This is managed by the \textit{Booking Facilities} microservice.
 
-	\item \textbf{User Groups} - \textit{Challenges} can also be turned into a competition amongst users of a group. For example, a group may consist of a few friends or an entire office department. Users within a group compete to complete goals, such as who can achieve the most steps in a single day. The \textit{User Groups} service is responsible for managing users into groups, and allowing users to leave and join other groups.
+	\item \textbf{User Groups} - \textit{Challenges} can also be used for competitions amongst users of a group. For example, a group may consist of a few friends or an entire office department. Users within a group compete to complete goals such as who can achieve the most steps in a single day. The \textit{User Groups} service is responsible for managing users into groups, and allowing users to leave and join other groups.
 
 \end{itemize}
