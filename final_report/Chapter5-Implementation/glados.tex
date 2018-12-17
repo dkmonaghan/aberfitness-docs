@@ -13,10 +13,10 @@ A new class abstracting the database layer allowed us to avoid writing entity ha
 Dependency injection cannot be used within the endpoint implementation, as the instantiation point is internal to the framework. This doesn't prevent us from using mocks as Mockito allows a developer to inject them through the reflection methods built into the library. A database call such as `\textit{db.getEntry(id)}' could be tested to see which status codes would be sent and verify the data, if any, was serialised correctly.
 
 \subsubsection{Entity Management}
-This service only persists Audit Data, therefore we ultimately need to persist a single entity type. Whilst many ORM solutions exists for Java, such as \textit{Hibernate}, we decided against them due to the implementation overhead that was required.
+This service only persists Audit Data, therefore only a single entity type ultimately needed to persisted. Whilst many ORM solutions exists for Java, such as \textit{Hibernate}, it was decided against using them due to the implementation overhead that was required.
 
 \par
-Instead we relied on the persistence layer provided in the EE specification. Using the connection pools which were set up for both Java services (see \ref{JTA_Targets}), we could specify which JTA the injected entity manager should use.
+Instead the persistence layer provided in the EE specification was relied on instead. Using the connection pools which were set up for both Java services (see \ref{JTA_Targets}), developers could specify which JTA the injected entity manager should use.
 
 \par
 Table schemas are generated based on entity annotations. This also allows the implementation provided by Payara, \textit{EclipseLink}, to create the tables required at deployment time. As the framework relies on the field types to determine which underlying storage to use there is a hidden pitfall. If the type does not have a native serialisation Java will try to persist this using binary data.
@@ -26,7 +26,7 @@ Table schemas are generated based on entity annotations. This also allows the im
 GLaDOS also provides a page that allows a user to retrieve audit data associated with their account. Administrators can look up any users audit data by user their unique ID too. In addition there is a status page which allows anyone to view the status of all other micro-services without logging in.
 
 \par
-The front-end of GLaDOS use facelets to implement the MVC pattern. A backing bean for the user data uses named queries from the persistence layer to retrieve data into a list of entity objects. We switched to using \textit{PrimeFaces}\cite{Primefaces}, which is a fork of the now deprecated \textit{RichFaces}. This allows us to use components such as \textit{DataTables} which dynamically generate tables based on the number of entries returned.
+The front-end of GLaDOS use facelets to implement the MVC pattern. A backing bean for the user data uses named queries from the persistence layer to retrieve data into a list of entity objects. The template files switched to using \textit{PrimeFaces}\cite{Primefaces}, which is a fork of the now deprecated \textit{RichFaces}. This allows us to use components such as \textit{DataTables} which dynamically generate tables based on the number of entries returned.
 
 \par
 The \textit{Fitbit Ingest Service} had completed OAuth implementation for connecting to internal and external APIs. This was ported across to \textit{GLaDOS} and further modified. As ingest services do not need a no front-end they currently don't persist \textit{JSON Web Tokens (JWTs)}. Additional methods were written specifically for this \textit{GLaDOS}. These include using the HTTP session handling built into the web framework to persist the token on the server. Another helper class was written which validates stored JWT tokens as the user navigates through protected pages, or POSTs any requests.
@@ -39,7 +39,7 @@ As the application stack uses an \textit{nginx} instance to reverse proxy querie
 `\textit{/glados/glados/}' base path.
 
 \par
-Initially we used an environment variable to manually generate links between the pages of the service and set the context root to 
+Initially environment variables were used to manually generate links between the pages of the service and set the context root to 
 `\textit{/}'. However, this quickly proved to be untenable when using forms, as POST requests were being sent to 
 `\textit{/destination}' 
 rather than 

@@ -6,7 +6,7 @@ SignalR is a set of libraries available for both .NET Core, and .NET Framework, 
 
 \subsection{Investigation}
 
-During the investigation into SignalR, we followed a number of tutorials available as part of the SignalR documentation.
+During the investigation into SignalR, developers followed a number of tutorials available as part of the SignalR documentation.
 
 In hindsight, further investigation into the work required to make use of SignalR functionality may have made it feasible for it to be introduced from the start of the project.
 
@@ -14,6 +14,6 @@ There is, however, the issue of authentication and authorization within SignalR 
 
 \subsection{Work Required}
 
-Although utilising the functionality of SignalR appears from a distance to be relatively simple, we ultimately decided to first focus on implementing the required core functionality of the system rather than directing development resources to desirable yet non-critical functionality.
+Although utilising the functionality of SignalR appears from a distance to be relatively simple, ultimately it was decided to first focus on implementing the required core functionality of the system rather than directing development resources to desirable yet non-critical functionality.
 
 It would be possible to modify the services within \textit{Aber Fitness} to make use of this functionality in the future. In particular, the \textit{Communications} microservice could take on the additional role of acting as the SignalR hub. Services which already send email notifications, such as \textit{Health Data Repository}, could be modified to also send SignalR notifications to interested clients. Clients such as the \textit{Health Dashboard} could be used to either display those notifications to users, or update the statistics on the dashboard automatically without requiring the user to manually refresh the page to see new data.
