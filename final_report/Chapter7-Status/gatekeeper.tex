@@ -8,8 +8,9 @@ Please see acceptance test table in Appendix 2, Section 0.2.5.
 
 The \textit{Gatekeeper} service, at its core, was only required to authenticate users and API endpoints. As such its additional functionality, such as two-factor authentication and password resets, are not listed in the acceptance test table. Of the 4 defined acceptance tests, all 4 have passed.
 
-At time of release, there is one outstanding issue with \textit{Gatekeeper}: 
+At time of release, there are two known issues with \textit{Gatekeeper}: 
 
 \begin{itemize}
 	\item Administrator can change their own user type to something other than administrator, leaving the system with no administrator.
+	\item Tokens issued by \textit{Gatekeeper} cannot be revoked and instead must expire.
 \end{itemize}
