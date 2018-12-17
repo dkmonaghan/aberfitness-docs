@@ -1,19 +1,19 @@
 \subsubsection{REST API}
 \par
-The primary role of GLaDOS is to store audit data so that users can view how their data was accessed and modified. GLaDOS also offers a page which displays the status of all the microservices within the system. We chose to serialise audit data into JSON and use REST as the transport mechanism as all applications had native support for this set up. Whilst there are native implementations, such as the Java Messaging Service, these require the calls be proxied into a local JVM instance to handle the transport component.
+The primary role of GLaDOS is to store audit data so that users can view how their data was accessed and modified. GLaDOS also offers a page which displays the status of all the microservices within the system. Audit data is serialised into JSON and uses REST as the transport mechanism as all applications had native support for this set up. Whilst there are native implementations, such as the Java Messaging Service, these require the calls be proxied into a local JVM instance to handle the transport component.
 
 \par
 \textit{JAX-RS} is an API specification for JSON parsing in Java, Payara provides \textit{Jersey} as the implementation of this API at runtime. This avoided us having to package additional dependencies into the web archive. This also allows us to build standard response pages based on the error code internally generated, avoiding having to develop error views.        
 
 \subsubsection{Unit Testing and Mocks}
 \par
-A new class abstracting the database layer allowed us to avoid writing entity handling at this point. We instead focused on writing unit tests which verified the various endpoints correctly serialised or de-serialised data. \textit{Mockito}\cite{Mockito} allows developers to inject mock objects by specifying the class which the test fixture is using.
+A new class abstracting the database layer allowed us to avoid writing entity handling at this point. Instead attention focused on writing unit tests which verified the various endpoints correctly serialised or de-serialised data. \textit{Mockito}\cite{Mockito} allowed developers to inject mock objects by specifying the class which the test fixture is using.
 
 \par
-We could not use dependency injection within the endpoint implementation, as the instantiation point is internal to the framework. This doesn't prevent us from using mocks as Mockito allows a developer to inject them through the reflection methods built into the library. A database call such as `\textit{db.getEntry(id)}' could be tested to see which status codes would be sent and verify the data, if any, was serialised correctly.
+Dependency injection cannot be used within the endpoint implementation, as the instantiation point is internal to the framework. This doesn't prevent us from using mocks as Mockito allows a developer to inject them through the reflection methods built into the library. A database call such as `\textit{db.getEntry(id)}' could be tested to see which status codes would be sent and verify the data, if any, was serialised correctly.
 
 \subsubsection{Entity Management}
-This service only persists Audit Data, therefore we ultimately need to persist a single entity. Whilst many ORM solutions exists for Java, such as \textit{Hibernate}, we decided against them due to the implementation overhead that was required.
+This service only persists Audit Data, therefore we ultimately need to persist a single entity type. Whilst many ORM solutions exists for Java, such as \textit{Hibernate}, we decided against them due to the implementation overhead that was required.
 
 \par
 Instead we relied on the persistence layer provided in the EE specification. Using the connection pools which were set up for both Java services (see \ref{JTA_Targets}), we could specify which JTA the injected entity manager should use.
@@ -29,10 +29,10 @@ GLaDOS also provides a page that allows a user to retrieve audit data associated
 The front-end of GLaDOS use facelets to implement the MVC pattern. A backing bean for the user data uses named queries from the persistence layer to retrieve data into a list of entity objects. We switched to using \textit{PrimeFaces}\cite{Primefaces}, which is a fork of the now deprecated \textit{RichFaces}. This allows us to use components such as \textit{DataTables} which dynamically generate tables based on the number of entries returned.
 
 \par
-The Fitbit Ingest Service had completed OAuth implementation for connecting to internal and external APIs. This was ported across to GLaDOS and further modified. As the ingest service has no front-end they don't need to persist \textit{JSON Web Tokens (JWTs)}. Additional methods were written specifically for this microservice. These include using the HTTP session handling built into the web framework to persist the token on the server. Another helper class was written which validates the stored JWT as the user navigates through protected pages, or POSTs any requests.
+The \textit{Fitbit Ingest Service} had completed OAuth implementation for connecting to internal and external APIs. This was ported across to \textit{GLaDOS} and further modified. As ingest services do not need a no front-end they currently don't persist \textit{JSON Web Tokens (JWTs)}. Additional methods were written specifically for this \textit{GLaDOS}. These include using the HTTP session handling built into the web framework to persist the token on the server. Another helper class was written which validates stored JWT tokens as the user navigates through protected pages, or POSTs any requests.
 
 \par
-Service statuses were implemented using a singleton Java bean which is instantiated at deployment. Using the scheduling capability provided for EJBs they poll all services every 20 seconds in a seperate thread. All services implement an endpoint at \textit{/api/status} that returns a 200 or 204. This is stored until the page is retrieved where the backing bean, acting as a presenter forwards the results on.
+Service statuses were implemented using a singleton Java bean which is instantiated at deployment. Using the scheduling capability provided by EJBs they poll all services every 20 seconds in a seperate thread. All services implement an endpoint at \textit{/api/status} that returns a 200 or 204. Results are stored until the status page is retrieved where the backing bean, acting as a presenter, forwards the results on.
 
 \par
 As the application stack uses an \textit{nginx} instance to reverse proxy queries the URLs must take this into account when they are generated within the facelet. .NET Core makes this trivial by calling `\textit{App.UsePathBase(URL)}' at start up, however Java applications rely on the context root. This was interfering with the URL rewriting that nginx performs resulting in the service using the 
@@ -43,4 +43,4 @@ Initially we used an environment variable to manually generate links between the
 `\textit{/}'. However, this quickly proved to be untenable when using forms, as POST requests were being sent to 
 `\textit{/destination}' 
 rather than 
-`\textit{/glados/destination}'. Ultimately to work around this an exception was added to nginx configuration to avoid re-writing any URLs for GLaDOS, and instead rely on the service to correctly address all requests. This allowed us to switch back to generating addresses based on the \textit{outcome} tag and use forms on the service.
+`\textit{/glados/destination}'. Ultimately to work around this an exception was added to nginx configuration, this avoids re-writing any URLs for GLaDOS, and instead relies on the service to correctly address all requests. This also allowed us to switch back to generating addresses based on the \textit{outcome} tag and use forms on the service.
