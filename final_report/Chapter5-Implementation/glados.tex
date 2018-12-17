@@ -12,18 +12,6 @@ A new class abstracting the database layer allowed us to avoid writing entity ha
 \par
 We could not use dependency injection within the endpoint implementation, as the instantiation point is internal to the framework. This doesn't prevent us from using mocks as Mockito allows a developer to inject them through the reflection methods built into the library. A database call such as `\textit{db.getEntry(id)}' could be tested to see which status codes would be sent and verify the data, if any, was serialised correctly.
 
-\subsubsection{Integration Testing with Arquillian}
-\textit{Arquillian}\cite{Arquillian} allows developers to specify the classes to archive and deploy within a text fixture. Payara also provides an embedded Arquillian test container which can be ran at test time to exercise sections of a full system. This would allow us to write integration tests for an end-to-end operations, such as POSTing data to an endpoint and ensuring it is written to the persistence layer.
-
-\par
-There was extensive documentation on the methods required to pack an archive, but limited examples on handling Maven dependencies. As the embedded instance provides no runtime methods we were having problems getting the container to correctly run. Developers could specify the full class paths for their dependencies to ensure the were packaged, but this was extremely verbose and fragile.
-
-\par
-We looked into using the Maven dependency resolver, which allows developers to get a list of runtime Jars and package them into the archive. However this would led to another set of problems where Maven was trying to export them into a \textit{.zip} format, then throw an exception because this was not supported.
-
-\par
-With no easy way to control the format that runtime dependencies were exported in, combined with a lack of documentation pertaining specifically to Maven we agreed to abandon this method of automated testing. This would give us more time for implementing other components within the deadline. We opted to rely on manual integration testing for the duration of the project instead.
-
 \subsubsection{Entity Management}
 This service only persists Audit Data, therefore we ultimately need to persist a single entity. Whilst many ORM solutions exists for Java, such as \textit{Hibernate}, we decided against them due to the implementation overhead that was required.
 
