@@ -6,7 +6,7 @@ The core architecture followed the MVC style recommended by .NET Core. The initi
 
 	\item The first model was \textit{profile}, this was used to store information regarding the user's availability and their preferred location. The model was also used to link the user to their ladder and their position within it, when their request to join one was accepted.
 
-	\item The second model was the \textit{ladder}, this was used as a repository to store a collection of users. The ladder name is the only field which is exposed to end users. Internally, it holds a reference to all the position objects for the current ladder. It also holds references to any users who have sent a request to join a ladder, but are pending approval.
+	\item The second model was the \textit{ladder}, this was used as a repository to store a collection of users. The ladder name is the only field which is exposed to the end user. Internally, it holds a reference to all the position objects for the current ladder. It also holds references to any users who have sent a request to join a ladder, but are pending approval.
 
 	\item The third model is the \textit{position}. This is used to link a user profile to a ladder, it is not visible to the user but is a critical link between a user and the ladder. It stores the current position in the respective ladder and any challenges they are, or have been, involved in.
 
