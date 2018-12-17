@@ -1,4 +1,4 @@
-In contrast to the experience with Java EE, the implementation process in .NET Core friendlier for developers. As the project progressed, services that did not have implementation work started were migrated to .NET Core rather than Java EE. This allowed the remaining development effort to progress with a greater velocity, and produce higher quality code, than if those services had been written in Java EE.
+In contrast to the experience with Java EE, the implementation process in .NET Core is friendlier for developers. As the project progressed, services that did not have implementation work started were migrated to .NET Core rather than Java EE. This allowed the remaining development effort to progress with a greater velocity, and produce higher quality code, than if those services had been written in Java EE.
 
 The use of EntityFramework, coupled with the Repository pattern\cite{dotnet_repository_pattern} recommended by Microsoft, made database operations simple and intuitive. Switching to our chosen database platform, MariaDB, was made possible via the use of the \textit{Pomelo EntityFrameworkCore MySQL connector}\cite{Pomelo}, a NuGet package which allows the native entity framework to work with MySQL APIs, which MariaDB has compatibility for.
 
@@ -8,4 +8,4 @@ Creating configuration files for Travis CI was extremely simple; once the C\# en
 
 Building Docker images was also a simple process using the example files provided by Microsoft\cite{dotnet_docker}, only requiring minor modification to expose additional ports to allow HTTPS traffic.
 
-In order to run scheduled tasks, such as sending email updates to users, the \textit{Hangfire}\cite{hangfire} package is utilised. This package allows the application to run functions on a repeated schedule, similar to cron jobs. \textit{Health Data Repository} and \textit{Challenges} use this package for user communication.
+In order to run scheduled tasks, such as sending email updates to users, the \textit{Hangfire}\cite{hangfire} package is utilised. This package allows the application to run functions on a repeated schedule, similar to cron jobs. \textit{Health Data Repository}, \textit{Ladders} and \textit{Challenges} use this package for user communication.
