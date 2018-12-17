@@ -5,7 +5,7 @@ Primarily, the development of this microservice was fairly straightforward, with
 
 One of the first and main issues that were identified was that of how the application would handle normalising data from Fitbit and potentially other activity-data providers. After some investigation, it was found that the Fitbit API didn't have a consistent format in how it returned what type of activity the user had performed; for example, Fitbit could return \textit{"Skiing 5\% slope"} and \textit{"Skiing 10\% slope"}. This lack of generalisation among activity types was identified as something that would cause the platform issues should other ingest services be developed in the future. 
 
-Many solutions were discussed for this problem, such as having the application dynamically create activities as they were imported. Ultimately it was decided that the most robust solution, which provided a consistent user experience, would be to create a table which mapped external API activity-identifiers onto a single \textit{Aber Fitness} activity (Fig. \ref{fig:health_mappings}). This idea was presented to the client and implemented shortly after.
+Many solutions were discussed for this problem, such as having the application dynamically create activities as they were imported. Ultimately it was decided that the most robust solution, which provided a consistent user experience, would be to create a table which mapped external API activity-identifiers onto a single \textit{Aber Fitness} activity (Fig. \ref{fig:health_mappings}). This idea was accepted by the client and implemented shortly after.
 
 \begin{figure}[H]
     \centering
@@ -14,7 +14,7 @@ Many solutions were discussed for this problem, such as having the application d
     \label{fig:health_mappings}
 \end{figure}
 
-The above interface was implemented into \textit{Aber Fitness} and provides an easily updated and flexible way for administrators to map custom external API activity identifiers onto internal activity resources. 
+The administrative interface (Figure \ref{fig:health_mappings}) was implemented into \textit{Aber Fitness} and provides an easily updated and flexible way for administrators to map custom external API activity identifiers onto internal activity resources. 
 
 Ingest services are then offered an API endpoint by Health Data Repository which allows those services to retrieve the mapping table in order to determine the most appropriate Activity ID to map the data onto.
 
@@ -23,4 +23,4 @@ Initially, it was planned that the \textit{Fitbit Ingest Service} would be updat
 
 From experience with other MVC frameworks, it was assumed that .NET Core would have the ability to "Create Model, If Exists Update". This functionality is a standard part of SQL with the \lstinline{CREATE IF EXISTS UPDATE} syntax. Contrary to expectations, it was discovered that .NET Core did not offer this functionality natively, and resulted in more code being written than would likely be necessary had another framework been used. 
 
-Ultimately this functionality was removed once it was discovered that step count data from Fitbit could not be obtained on an hourly basis, thus proving the additional API endpoints developed no longer necessary. 
+Ultimately this functionality was removed once it was discovered that step count data from Fitbit could not be obtained on an hourly basis, thus proving the additional API endpoints were no longer necessary. 
